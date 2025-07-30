@@ -1,0 +1,304 @@
+/* ===== STYLES ADDITIONNELS POUR LES POSITIONS ===== */
+
+/* ===== STYLES ADDITIONNELS POUR LES POSITIONS ===== */
+
+.position-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.position-item:hover {
+    background: rgba(0, 255, 136, 0.08);
+    border-left-color: #00ff88;
+    transform: translateX(3px);
+}
+
+.position-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.position-pair {
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 0.9rem;
+}
+
+.position-type {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.position-type.long {
+    background: rgba(0, 255, 136, 0.2);
+    color: #00ff88;
+}
+
+.position-type.short {
+    background: rgba(255, 71, 87, 0.2);
+    color: #ff4757;
+}
+
+.position-pnl {
+    font-weight: bold;
+    font-size: 0.9rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+}
+
+.position-pnl.positive {
+    color: #00ff88;
+    background: rgba(0, 255, 136, 0.1);
+}
+
+.position-pnl.negative {
+    color: #ff4757;
+    background: rgba(255, 71, 87, 0.1);
+}
+
+/* ===== AMÉLIORATIONS POUR LES CARTES SECTIONS ===== */
+
+.dashboard-section-card {
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+.dashboard-section-card:hover {
+    box-shadow: 
+        0 15px 35px rgba(0, 255, 136, 0.2),
+        0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Indicateur de navigation */
+.section-arrow {
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.dashboard-section-card:hover .section-arrow {
+    color: #00ccff;
+    transform: translateX(8px) scale(1.1);
+}
+
+/* ===== STYLES POUR LES MÉTRIQUES HERO ===== */
+
+.hero-quick-stats {
+    position: relative;
+    z-index: 2;
+}
+
+.quick-stat {
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.quick-stat:hover {
+    background: rgba(0, 255, 136, 0.08);
+    border-color: rgba(0, 255, 136, 0.3);
+    transform: translateY(-2px);
+}
+
+/* ===== ANIMATIONS SPÉCIALES ===== */
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.dashboard-hero {
+    background: linear-gradient(135deg, 
+        rgba(0, 255, 136, 0.1), 
+        rgba(0, 204, 255, 0.05), 
+        rgba(153, 69, 255, 0.05));
+    background-size: 200% 200%;
+    animation: gradientShift 8s ease-in-out infinite;
+}
+
+/* ===== AMÉLIORATIONS MOBILE ===== */
+
+@media (max-width: 768px) {
+    .position-item {
+        padding: 0.6rem;
+    }
+    
+    .position-pair {
+        font-size: 0.8rem;
+    }
+    
+    .position-type {
+        font-size: 0.65rem;
+        padding: 0.15rem 0.4rem;
+    }
+    
+    .position-pnl {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.5rem;
+    }
+    
+    .quick-stat {
+        padding: 0.8rem;
+    }
+    
+    .quick-stat-value {
+        font-size: 1.1rem;
+    }
+    
+    .quick-stat-label {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .position-info {
+        gap: 0.1rem;
+    }
+    
+    .position-pair {
+        font-size: 0.75rem;
+    }
+    
+    .position-type {
+        font-size: 0.6rem;
+        padding: 0.1rem 0.3rem;
+    }
+    
+    .position-pnl {
+        font-size: 0.75rem;
+        padding: 0.15rem 0.4rem;
+    }
+}
+
+/* ===== EFFETS DE FOCUS POUR ACCESSIBILITÉ ===== */
+
+.position-item:focus,
+.quick-stat:focus {
+    outline: 2px solid rgba(0, 255, 136, 0.5);
+    outline-offset: 2px;
+}
+
+/* ===== ÉTATS DE CHARGEMENT ===== */
+
+.loading-skeleton {
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0.1) 25%, 
+        rgba(255, 255, 255, 0.2) 50%, 
+        rgba(255, 255, 255, 0.1) 75%);
+    background-size: 200% 100%;
+    animation: loading-shimmer 1.5s infinite;
+    border-radius: 8px;
+    height: 1rem;
+}
+
+@keyframes loading-shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.position-item.loading {
+    opacity: 0.6;
+}
+
+.position-item.loading .position-pair,
+.position-item.loading .position-pnl {
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0.1) 25%, 
+        rgba(255, 255, 255, 0.2) 50%, 
+        rgba(255, 255, 255, 0.1) 75%);
+    background-size: 200% 100%;
+    animation: loading-shimmer 1.5s infinite;
+    color: transparent;
+    border-radius: 4px;
+}
+
+/* ===== INDICATEURS DE STATUT ===== */
+
+.section-status {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #00ff88;
+}
+
+.section-status.inactive {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.section-status.warning {
+    background: #ffa502;
+}
+
+/* ===== TOOLTIPS SIMPLES ===== */
+
+[data-tooltip] {
+    position: relative;
+    cursor: help;
+}
+
+[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    z-index: 1000;
+    margin-bottom: 5px;
+}
+
+[data-tooltip]:hover::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+}
+
+/* ===== CORRECTIONS FINALES ===== */
+
+.trading-overview .trading-positions {
+    min-height: 120px;
+}
+
+.formations-overview .formation-progress {
+    min-height: 80px;
+}
+
+.live-overview .next-live {
+    min-height: 80px;
+}
+
+/* Assurer la cohérence des couleurs */
+.positive {
+    color: #00ff88 !important;
+}
+
+.negative {
+    color: #ff4757 !important;
+}

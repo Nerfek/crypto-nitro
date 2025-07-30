@@ -1,0 +1,946 @@
+/* ===== COURSE-VIEWER.CSS ===== */
+
+/* ===== CONTAINER PRINCIPAL ===== */
+.course-container {
+    display: flex;
+    min-height: 100vh;
+    padding-top: 70px;
+    background: linear-gradient(135deg, #001122 0%, #003344 50%, #001122 100%);
+}
+
+/* ===== SIDEBAR COURS ===== */
+.course-sidebar {
+    width: 320px;
+    background: rgba(0, 17, 34, 0.9);
+    backdrop-filter: blur(15px);
+    border-right: 1px solid rgba(0, 255, 136, 0.3);
+    padding: 2rem 0;
+    height: calc(100vh - 70px);
+    position: sticky;
+    top: 70px;
+    overflow-y: auto;
+}
+
+.course-nav {
+    padding: 0 1.5rem;
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.back-btn:hover {
+    background: rgba(0, 255, 136, 0.1);
+    color: #00ff88;
+    border-color: rgba(0, 255, 136, 0.3);
+}
+
+.course-info-sidebar h3 {
+    color: #00ff88;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    line-height: 1.3;
+}
+
+.course-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.course-progress-sidebar {
+    border-top: 1px solid rgba(0, 255, 136, 0.2);
+    padding-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.course-progress-sidebar h4 {
+    color: #00ff88;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+
+.progress-circle-small::before {
+    content: '';
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    background: #001122;
+    border-radius: 50%;
+}
+
+.progress-text-small {
+    color: #00ff88;
+    font-weight: bold;
+    font-size: 0.9rem;
+    z-index: 1;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00ff88, #00ccff);
+    border-radius: 3px;
+    transition: width 0.8s ease;
+}
+
+.sections-list {
+    border-top: 1px solid rgba(0, 255, 136, 0.2);
+    padding-top: 1.5rem;
+}
+
+.section-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.section-nav-item:hover {
+    background: rgba(0, 255, 136, 0.1);
+    border-color: rgba(0, 255, 136, 0.3);
+}
+
+.section-nav-item.active {
+    background: rgba(0, 255, 136, 0.2);
+    border-color: #00ff88;
+}
+
+.section-nav-item.completed {
+    background: rgba(0, 255, 136, 0.1);
+}
+
+.section-number {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.section-nav-item.active .section-number {
+    background: #00ff88;
+    color: #000;
+}
+
+.section-nav-item.completed .section-number {
+    background: #00ff88;
+    color: #000;
+}
+
+.section-nav-info h5 {
+    color: #ffffff;
+    margin: 0 0 0.3rem 0;
+    font-size: 0.9rem;
+}
+
+.section-nav-info p {
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+/* ===== CONTENU PRINCIPAL ===== */
+.course-main {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+/* ===== LOADER ===== */
+.course-loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+}
+
+.loader-content {
+    text-align: center;
+    background: rgba(0, 255, 136, 0.05);
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    border-radius: 20px;
+    padding: 3rem;
+    max-width: 400px;
+}
+
+.loader-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-20px); }
+    60% { transform: translateY(-10px); }
+}
+
+.loader-content h3 {
+    color: #00ff88;
+    margin-bottom: 0.5rem;
+}
+
+.loader-content p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 2rem;
+}
+
+.loader-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(0, 255, 136, 0.3);
+    border-top: 4px solid #00ff88;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ===== EN-TÊTE COURS ===== */
+.course-header {
+    background: rgba(0, 255, 136, 0.05);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.course-breadcrumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.course-breadcrumb a {
+    color: #00ff88;
+    text-decoration: none;
+}
+
+.course-breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.course-header h1 {
+    color: #00ff88;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.course-header p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+}
+
+.course-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+}
+
+.stat-icon {
+    font-size: 1.2rem;
+}
+
+/* ===== UNIFORMISATION ÉTOILES ===== */
+.stat-item, .course-meta span {
+    font-size: 1rem;
+}
+
+.stat-item .stat-icon {
+    font-size: 1.2rem;
+}
+
+/* S'assurer que toutes les étoiles ont la même taille */
+.course-meta span, .stat-item span {
+    line-height: 1.2;
+}
+
+/* ===== NAVIGATION MOBILE ===== */
+.mobile-sections-nav {
+    display: none;
+    background: rgba(0, 255, 136, 0.1);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 15px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.section-nav-btn {
+    background: rgba(0, 255, 136, 0.2);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    color: #00ff88;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.section-nav-btn:hover:not(:disabled) {
+    background: rgba(0, 255, 136, 0.3);
+    transform: translateY(-1px);
+}
+
+.section-nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.current-section-info {
+    color: #00ff88;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* ===== SECTIONS COURS ===== */
+.sections-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.section-card {
+    background: rgba(0, 20, 40, 0.4);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 15px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.section-card:hover {
+    border-color: rgba(0, 255, 136, 0.5);
+    box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
+}
+
+.section-header {
+    margin-bottom: 2rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+    padding-bottom: 1.5rem;
+}
+
+.section-header h2 {
+    color: #00ff88;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.section-header p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+}
+
+.section-content {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.7;
+    font-size: 1.1rem;
+}
+
+.section-content h3 {
+    color: #00ff88;
+    margin: 2rem 0 1rem 0;
+}
+
+.section-content ul,
+.section-content ol {
+    margin: 1rem 0;
+    padding-left: 2rem;
+}
+
+.section-content li {
+    margin-bottom: 0.5rem;
+}
+
+.section-content strong {
+    color: #00ff88;
+}
+
+/* ===== VIDÉOS ===== */
+.video-container {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.video-container iframe,
+.video-container video {
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+/* ===== ACTIONS FINALES ===== */
+.course-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3rem;
+    padding: 2rem;
+    background: rgba(0, 255, 136, 0.05);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 15px;
+    flex-wrap: wrap;
+    gap: 1rem;
+    position: relative;
+}
+
+/* Bouton terminé à droite */
+.course-actions .btn-success {
+    margin-left: auto; /* Pousser à droite */
+    transition: all 0.3s ease;
+}
+
+.course-actions .btn-success:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 255, 136, 0.3);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    gap: 0.5rem;
+    font-size: 1rem;
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.btn-success {
+    background: linear-gradient(45deg, #00ff88, #00ccff);
+    color: #000;
+}
+
+.btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 255, 136, 0.3);
+}
+
+
+/* ===== ESPACEMENT VIDÉO FINALE ===== */
+.final-video-section {
+    margin-top: 3rem;
+    border-top: 2px solid rgba(0, 255, 136, 0.2);
+    padding-top: 2rem;
+}
+
+/* ===== ANIMATIONS PROGRESSION ===== */
+.progress-circle-small {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: conic-gradient(#00ff88 0deg 0deg, rgba(255, 255, 255, 0.1) 0deg 360deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    position: relative;
+    transition: all 0.8s ease;
+}
+
+.progress-circle-small.animate {
+    animation: progressPulse 0.8s ease;
+}
+
+@keyframes progressPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); box-shadow: 0 0 20px rgba(0, 255, 136, 0.4); }
+    100% { transform: scale(1); }
+}
+
+.progress-text-small {
+    color: #00ff88;
+    font-weight: bold;
+    font-size: 0.9rem;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.progress-text-small.updated {
+    animation: textBounce 0.5s ease;
+}
+
+@keyframes textBounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); color: #00ccff; }
+    100% { transform: scale(1); color: #00ff88; }
+}
+
+
+/* Animation barre de progression */
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00ff88, #00ccff);
+    border-radius: 3px;
+    transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: progressShine 2s infinite;
+}
+
+@keyframes progressShine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+
+
+/* ===== IMAGES DES SECTIONS ===== */
+.section-images {
+    margin: 2rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.section-image {
+    background: rgba(0, 255, 136, 0.05);
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    aspect-ratio: 16/9; /* Force un ratio 16:9 uniforme */
+    position: relative;
+}
+
+.section-image:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 255, 136, 0.15);
+    border-color: rgba(0, 255, 136, 0.4);
+}
+
+.section-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Couvre toute la zone sans déformation */
+    object-position: center; /* Centre l'image */
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.section-image:hover img {
+    transform: scale(1.02); /* Zoom très léger au survol */
+}
+
+.image-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    margin: 0;
+    color: #ffffff;
+    font-size: 0.9rem;
+    text-align: center;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.section-image:hover .image-caption {
+    transform: translateY(0);
+}
+
+/* Version alternative : caption toujours visible */
+.section-image.caption-visible .image-caption {
+    position: static;
+    transform: none;
+    background: rgba(0, 255, 136, 0.1);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Mise en page spéciale pour une seule image */
+.section-images:has(> .section-image:only-child) {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+/* Mise en page spéciale pour deux images */
+.section-images:has(> .section-image:nth-child(2):last-child) {
+    grid-template-columns: 1fr 1fr;
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+/* Lightbox au clic sur image */
+.section-image img:hover {
+    cursor: zoom-in;
+}
+
+/* Responsive pour les images */
+@media (max-width: 768px) {
+    .section-images {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin: 1.5rem 0;
+    }
+    
+    .section-image {
+        aspect-ratio: 4/3; /* Ratio différent sur mobile */
+    }
+    
+    .image-caption {
+        font-size: 0.85rem;
+        padding: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-images {
+        grid-template-columns: 1fr;
+        margin: 1rem 0;
+    }
+    
+    .section-image {
+        aspect-ratio: 16/10; /* Ratio plus carré sur très petit écran */
+    }
+    
+    .image-caption {
+        padding: 0.6rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* ===== ANIMATIONS LIGHTBOX ===== */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* ===== CURSEUR ZOOM ===== */
+.section-image img {
+    cursor: zoom-in;
+}
+
+.section-image img:hover::after {
+    content: '🔍';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 50%;
+    font-size: 0.8rem;
+}
+
+/* ===== STYLES POUR LE CONTENU ÉDITEUR (DEPUIS ADMIN) ===== */
+/* Styles pour le contenu collé et formaté depuis l'admin */
+.section-content * {
+    color: rgba(255, 255, 255, 0.9) !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    font-family: inherit !important;
+}
+
+/* Styles pour les éléments formatés */
+.section-content strong,
+.section-content b {
+    color: #00ff88 !important;
+    background: transparent !important;
+}
+
+.section-content em,
+.section-content i {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-style: italic;
+    background: transparent !important;
+}
+
+.section-content u {
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-decoration: underline;
+    background: transparent !important;
+}
+
+/* Styles pour les listes */
+.section-content ul,
+.section-content ol {
+    margin: 1rem 0;
+    padding-left: 2rem;
+    color: rgba(255, 255, 255, 0.9) !important;
+    background: transparent !important;
+}
+
+.section-content li {
+    margin-bottom: 0.5rem;
+    color: rgba(255, 255, 255, 0.9) !important;
+    background: transparent !important;
+}
+
+/* Styles pour les titres */
+.section-content h1,
+.section-content h2,
+.section-content h3,
+.section-content h4,
+.section-content h5,
+.section-content h6 {
+    color: #00ff88 !important;
+    margin: 1.5rem 0 1rem 0;
+    font-weight: 600;
+    background: transparent !important;
+}
+
+/* Styles pour les paragraphes */
+.section-content p {
+    margin: 1rem 0;
+    color: rgba(255, 255, 255, 0.9) !important;
+    background: transparent !important;
+    line-height: 1.7;
+}
+
+/* Styles pour l'alignement du texte */
+.section-content [style*="text-align: center"],
+.section-content .text-center {
+    text-align: center !important;
+}
+
+.section-content [style*="text-align: left"],
+.section-content .text-left {
+    text-align: left !important;
+}
+
+.section-content [style*="text-align: right"],
+.section-content .text-right {
+    text-align: right !important;
+}
+
+/* Styles pour les citations */
+.section-content blockquote {
+    border-left: 3px solid #00ff88;
+    padding-left: 1rem;
+    margin: 1rem 0;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.8) !important;
+    background: rgba(0, 255, 136, 0.05) !important;
+}
+
+/* Styles pour le code inline */
+.section-content code {
+    background: rgba(0, 255, 136, 0.2) !important;
+    color: #00ff88 !important;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+}
+
+/* Styles pour les liens */
+.section-content a {
+    color: #00ccff !important;
+    text-decoration: underline;
+    background: transparent !important;
+}
+
+.section-content a:hover {
+    color: #00ff88 !important;
+}
+
+/* Override pour les spans et divs */
+.section-content span,
+.section-content div {
+    color: inherit !important;
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .course-sidebar {
+        width: 280px;
+    }
+    
+    .course-main {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .course-container {
+        flex-direction: column;
+    }
+    
+    .course-sidebar {
+        display: none;
+    }
+    
+    .mobile-sections-nav {
+        display: flex;
+    }
+    
+    .course-main {
+        padding: 1rem;
+    }
+    
+    .course-header h1 {
+        font-size: 2rem;
+    }
+    
+    .course-stats {
+        gap: 1rem;
+    }
+    
+    .section-card {
+        padding: 1.5rem;
+    }
+    
+    .course-actions {
+        flex-direction: column;
+        text-align: center;
+        align-items: stretch;
+    }
+    
+    /* MOBILE : bouton terminé AVANT le bouton retour */
+    .course-actions .btn-success {
+        position: static;
+        transform: none;
+        order: -1;
+        margin: 0 0 1rem 0;
+    }
+    
+    .course-actions .btn-success:hover {
+        transform: translateY(-2px);
+    }
+    
+    .course-actions .btn-secondary {
+        order: 1;
+    }
+    
+    .video-container iframe,
+    .video-container video {
+        height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .course-header {
+        padding: 1.5rem;
+    }
+    
+    .course-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .section-card {
+        padding: 1rem;
+    }
+    
+    .mobile-sections-nav {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .section-nav-btn {
+        width: 100%;
+    }
+    
+    .video-container iframe,
+    .video-container video {
+        height: 200px;
+    }
+}
+
+/* ===== SCROLLBAR PERSONNALISÉE ===== */
+.course-sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.course-sidebar::-webkit-scrollbar-track {
+    background: rgba(0, 255, 136, 0.1);
+    border-radius: 3px;
+}
+
+.course-sidebar::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 136, 0.5);
+    border-radius: 3px;
+}
+
+.course-sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 255, 136, 0.8);
+}

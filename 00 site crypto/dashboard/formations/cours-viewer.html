@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cours - Crypto-Nitro</title>
+
+    <link rel="icon" type="image/png" href="../../logo/fusee-crypto-nitro.png">
+    
+    <!-- CSS partagé -->
+    <link rel="stylesheet" href="../vu%20ensemble/css/dashboard-main.css">
+    <link rel="stylesheet" href="../vu%20ensemble/css/dashboard-nav.css">
+    
+    <!-- CSS spécifique cours -->
+    <link rel="stylesheet" href="css/cours-viewer.css">
+</head>
+<body class="dashboard-body">
+    
+    <!-- Header Dashboard -->
+    <header class="dashboard-header">
+        <div class="header-content">
+            <div class="logo-dashboard">
+                <a href="../../index.html">🚀 CryptoTraders Pro</a>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <div class="user-avatar" id="user-avatar">👨‍🚀</div>
+                    <span class="user-name" id="user-name">Astronaute</span>
+                    <div class="user-dropdown">
+                        <a href="../vu%20ensemble/dashboard.html">🏠 Dashboard</a>
+                        <a href="../../index.html" id="logout-btn">🚪 Déconnexion</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Container Principal -->
+    <div class="course-container">
+        
+        <!-- Sidebar progression -->
+        <aside class="course-sidebar">
+            <div class="course-nav">
+                <a href="formations.html" class="back-btn">
+                    ← Retour aux formations
+                </a>
+                
+                <div class="course-info-sidebar">
+                    <h3 id="course-title-sidebar">Chargement...</h3>
+                    <div class="course-meta">
+                        <span id="course-duration">⏱️ --</span>
+                        <span id="course-difficulty">⭐ --</span>
+                    </div>
+                </div>
+                
+                <div class="course-progress-sidebar">
+                    <h4>📊 Progression</h4>
+                    <div class="progress-circle-small">
+                        <div class="progress-text-small" id="progress-percentage">0%</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="sidebar-progress" style="width: 0%"></div>
+                    </div>
+                    <p id="progress-text">Section 0 sur 0</p>
+                </div>
+                
+                <div class="sections-list" id="sections-navigation">
+                    <!-- Sections générées dynamiquement -->
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Contenu principal du cours -->
+        <main class="course-main">
+            
+            <!-- Loader initial -->
+            <div class="course-loader" id="course-loader">
+                <div class="loader-content">
+                    <div class="loader-icon">🚀</div>
+                    <h3>Chargement du cours...</h3>
+                    <p>Préparation de votre formation</p>
+                    <div class="loader-spinner"></div>
+                </div>
+            </div>
+            
+            <!-- Contenu du cours -->
+            <div class="course-content" id="course-content" style="display: none;">
+                
+                <!-- En-tête du cours -->
+                <div class="course-header">
+                    <div class="course-breadcrumb">
+                        <a href="formations.html">Formations</a>
+                        <span>›</span>
+                        <span id="course-breadcrumb-title">Cours</span>
+                    </div>
+                    
+                    <h1 id="course-title">Titre du cours</h1>
+                    <p id="course-description">Description du cours</p>
+                    
+                    <div class="course-stats">
+                        <div class="stat-item">
+                            <span class="stat-icon">⏱️</span>
+                            <span id="course-duration-main">Durée</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">📚</span>
+                            <span id="course-sections-count">0 sections</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">⭐</span>
+                            <span id="course-difficulty-main">Difficulté</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigation sections mobile -->
+                <div class="mobile-sections-nav">
+                    <button class="section-nav-btn" id="prev-section-btn" onclick="navigateSection(-1)">
+                        ← Section précédente
+                    </button>
+                    <div class="current-section-info">
+                        <span id="current-section-number">1</span> / <span id="total-sections">1</span>
+                    </div>
+                    <button class="section-nav-btn" id="next-section-btn" onclick="navigateSection(1)">
+                        Section suivante →
+                    </button>
+                </div>
+                
+                <!-- Contenu des sections -->
+                <div class="sections-container" id="sections-container">
+                    <!-- Sections générées dynamiquement -->
+                </div>
+                
+                <!-- Vidéo finale -->
+                <div class="final-video-section" id="final-video-section" style="display: none;">
+                    <div class="section-card">
+                        <div class="section-header">
+                            <h2>🎬 Vidéo de conclusion</h2>
+                            <p>Récapitulatif et conclusion de votre formation</p>
+                        </div>
+                        <div class="video-container" id="final-video-container">
+                            <!-- Vidéo finale insérée ici -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Actions finales -->
+                <div class="course-actions">
+                    <button class="btn btn-secondary" onclick="goBackToFormations()">
+                        ← Retour aux formations
+                    </button>
+                    <button class="btn btn-success" onclick="completeCourse()" id="complete-btn">
+                        ✅ Marquer comme terminé
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    
+    <!-- Config Firebase -->
+    <script src="../../firebase/config.js"></script>
+    
+    <!-- Auth Firebase -->
+    <script src="../../firebase/auth.js"></script>
+    
+    <!-- Script du cours -->
+    <script src="js/cours-viewer.js"></script>
+
+    <!-- POINTS SUSTEM -->
+    <script src="../admin/points/js/points-system.js"></script>
+
+</body>
+</html>

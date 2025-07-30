@@ -1,0 +1,59 @@
+{
+  "name": "CryptoTraders Pro - Trading Dashboard",
+  "short_name": "CryptoTraders",
+  "description": "Plateforme de trading crypto professionnelle avec journal personnel",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000011",
+  "theme_color": "#00ff88",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "fr",
+  
+  "icons": [
+    {
+      "src": "/pwa/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/pwa/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/pwa/icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  
+  "categories": ["finance", "business", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Trading Dashboard",
+      "short_name": "Trading",
+      "description": "Accès direct au dashboard de trading",
+      "url": "/dashboard/dashboard.html",
+      "icons": [{ "src": "pwa/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Journal de Trading",
+      "short_name": "Journal",
+      "description": "Votre journal personnel",
+      "url": "/dashboard/dashboard.html#tableau",
+      "icons": [{ "src": "pwa/icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ],
+  
+  "screenshots": [
+    {
+      "src": "/pwa/icons/screenshot-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ]
+}

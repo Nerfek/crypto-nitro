@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer un Cours - Crypto-Nitro</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/admin-main.css">
+    <link rel="stylesheet" href="../css/admin-components.css">
+    <link rel="stylesheet" href="css/creation.css">
+</head>
+<body class="admin-body">
+    
+    <!-- Header -->
+    <header class="admin-header">
+        <div class="header-content">
+            <div class="logo-admin">
+                <a href="../admin.html">🛡️ CryptoTraders Pro - Admin</a>
+            </div>
+            
+            <div class="header-right">
+                <div class="admin-info">
+                    <span class="admin-badge">FORMATEUR</span>
+                    <div class="user-info">
+                        <div class="user-avatar">👑</div>
+                        <span class="user-name" id="admin-name">Formateur</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Container Principal -->
+    <div class="creation-container">
+        
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="../admin.html">🏠 Dashboard</a>
+            <span>›</span>
+            <a href="javascript:void(0)" onclick="goToFormations()">🎓 Formations</a>
+            <span>›</span>
+            <span class="current">Créer un Cours</span>
+        </div>
+
+        <!-- En-tête -->
+        <div class="page-header">
+            <h1>🎓 Créer un Nouveau Cours</h1>
+            <p>Créez un module de formation structuré pour vos étudiants</p>
+        </div>
+
+        <!-- Formulaire -->
+        <form id="course-form" class="course-form">
+            
+            <!-- Informations générales -->
+            <div class="form-section">
+                <h2>📝 Informations du Cours</h2>
+                
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label for="course-title">Titre du Cours *</label>
+                        <input type="text" id="course-title" required placeholder="Ex: La cryptomonnaie, c'est quoi?">
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="course-description">Description *</label>
+                        <textarea id="course-description" required rows="3" 
+                                  placeholder="Décrivez ce que vos étudiants vont apprendre dans ce cours..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="course-category">Catégorie *</label>
+                        <select id="course-category" required>
+                            <option value="">Choisir une catégorie</option>
+                            <option value="debutant">🌱 Débutant</option>
+                            <option value="intermediaire">⭐ Intermédiaire</option>
+                            <option value="avance">🚀 Avancé</option>
+                            <option value="expert">👑 Expert</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="course-duration">Durée estimée</label>
+                        <input type="text" id="course-duration" placeholder="Ex: 2h30">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>Émoji du cours</label>
+                        <div class="emoji-selector">
+                            <div class="emoji-preview">
+                                <span class="selected-emoji" id="course-emoji">🎓</span>
+                                <span class="emoji-text">Cliquez pour changer</span>
+                            </div>
+                            <div class="emoji-grid" id="course-emoji-grid" style="display: none;">
+                                <span class="emoji-option" data-emoji="🎓">🎓</span>
+                                <span class="emoji-option" data-emoji="📚">📚</span>
+                                <span class="emoji-option" data-emoji="💡">💡</span>
+                                <span class="emoji-option" data-emoji="🚀">🚀</span>
+                                <span class="emoji-option" data-emoji="💰">💰</span>
+                                <span class="emoji-option" data-emoji="📈">📈</span>
+                                <span class="emoji-option" data-emoji="🔐">🔐</span>
+                                <span class="emoji-option" data-emoji="⚡">⚡</span>
+                                <span class="emoji-option" data-emoji="🎯">🎯</span>
+                                <span class="emoji-option" data-emoji="🔥">🔥</span>
+                                <span class="emoji-option" data-emoji="💎">💎</span>
+                                <span class="emoji-option" data-emoji="🌟">🌟</span>
+                            </div>
+                            <button type="button" class="btn-auto-emoji" onclick="suggestEmojiFromTitle()">🎲 Suggérer automatiquement</button>
+                        </div>
+                        <input type="hidden" id="course-emoji-value" value="🎓">
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label>Niveau de difficulté</label>
+                        <div class="difficulty-selector">
+                            <button type="button" class="star-btn active" data-rating="1">⭐</button>
+                            <button type="button" class="star-btn" data-rating="2">⭐</button>
+                            <button type="button" class="star-btn" data-rating="3">⭐</button>
+                            <button type="button" class="star-btn" data-rating="4">⭐</button>
+                            <button type="button" class="star-btn" data-rating="5">⭐</button>
+                            <span class="difficulty-text">Très facile</span>
+                        </div>
+                        <input type="hidden" id="course-difficulty" value="1">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sections du cours -->
+            <div class="form-section">
+                <div class="section-header">
+                    <h2>📚 Contenu du Cours</h2>
+                    <p>Structurez votre cours en sections. Chaque section peut contenir du texte et une vidéo.</p>
+                </div>
+                
+                <div id="sections-container">
+                    <!-- Section 1 par défaut -->
+                    <div class="course-section" data-section="1">
+                        <div class="section-header-item">
+                            <div class="section-title-group">
+                                <div class="section-emoji-selector">
+                                    <span class="section-emoji" data-section="1">📖</span>
+                                    <div class="section-emoji-grid" style="display: none;">
+                                        <span class="emoji-option" data-emoji="📖">📖</span>
+                                        <span class="emoji-option" data-emoji="📝">📝</span>
+                                        <span class="emoji-option" data-emoji="💡">💡</span>
+                                        <span class="emoji-option" data-emoji="🔍">🔍</span>
+                                        <span class="emoji-option" data-emoji="⚙️">⚙️</span>
+                                        <span class="emoji-option" data-emoji="🎯">🎯</span>
+                                        <span class="emoji-option" data-emoji="🚀">🚀</span>
+                                        <span class="emoji-option" data-emoji="💎">💎</span>
+                                    </div>
+                                </div>
+                                <h3>Section 1</h3>
+                            </div>
+                            <button type="button" class="btn-remove-section" onclick="removeSection(1)" disabled>
+                                🗑️ Supprimer
+                            </button>
+                        </div>
+                        
+                        <div class="section-content">
+                            <div class="form-group">
+                                <label>Titre de la section *</label>
+                                <input type="text" name="section-title[]" required 
+                                       placeholder="Ex: Comprendre la blockchain">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Contenu de la section *</label>
+                                <div class="editor-container">
+                                    <div class="editor-toolbar">
+                                        <button type="button" class="editor-btn" data-command="bold" title="Gras">B</button>
+                                        <button type="button" class="editor-btn" data-command="italic" title="Italique">I</button>
+                                        <button type="button" class="editor-btn" data-command="underline" title="Souligné">U</button>
+                                        <button type="button" class="editor-btn" data-command="insertUnorderedList" title="Liste à puces">• Liste</button>
+                                        <button type="button" class="editor-btn" data-command="insertOrderedList" title="Liste numérotée">1. Liste</button>
+                                        <button type="button" class="editor-btn" data-command="justifyLeft" title="Aligner à gauche">⬅</button>
+                                        <button type="button" class="editor-btn" data-command="justifyCenter" title="Centrer">⬌</button>
+                                        <button type="button" class="editor-btn" data-command="justifyRight" title="Aligner à droite">➡</button>
+                                    </div>
+                                    <div class="editor-content" contenteditable="true" 
+                                         placeholder="Rédigez le contenu de cette section..."></div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Images de la section</label>
+                                <div class="images-container" data-section="1">
+                                    <div class="images-list"></div>
+                                    <button type="button" class="btn btn-secondary btn-add-image" onclick="addImage(1)">
+                                        📷 Ajouter une image
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bouton ajouter section -->
+                <div class="add-section">
+                    <button type="button" class="btn btn-success" onclick="addSection()">
+                        ➕ Ajouter une Section
+                    </button>
+                </div>
+            </div>
+
+            <!-- Vidéo finale du cours -->
+            <div class="form-section">
+                <h2>🎥 Vidéo Finale du Cours</h2>
+                <p>Ajoutez une vidéo récapitulative qui sera affichée à la fin de toutes les sections.</p>
+                
+                <div class="video-upload-zone">
+                    <div class="video-tabs">
+                        <button type="button" class="video-tab active" data-tab="upload">📁 Upload Fichier</button>
+                        <button type="button" class="video-tab" data-tab="youtube">🎥 Lien YouTube</button>
+                    </div>
+                    
+                    <!-- Onglet Upload -->
+                    <div class="video-tab-content active" id="upload-tab">
+                        <input type="file" accept="video/*" id="course-final-video">
+                        <label for="course-final-video" class="upload-area">
+                            <div class="upload-icon">🎥</div>
+                            <div class="upload-text">
+                                <strong>Cliquez pour ajouter la vidéo finale</strong>
+                                <span>ou glissez-déposez ici</span>
+                            </div>
+                            <div class="upload-hint">MP4, AVI, MOV - Max 100MB</div>
+                        </label>
+                        <div class="video-preview" style="display: none;">
+                            <video controls></video>
+                            <button type="button" class="btn-remove-video">❌ Supprimer</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Onglet YouTube -->
+                    <div class="video-tab-content" id="youtube-tab">
+                        <div class="form-group">
+                            <label>Lien YouTube</label>
+                            <input type="url" id="course-youtube-url" placeholder="https://www.youtube.com/watch?v=...">
+                            <small class="form-hint">Collez l'URL complète de votre vidéo YouTube</small>
+                        </div>
+                        <div class="youtube-preview" id="youtube-preview" style="display: none;">
+                            <iframe width="100%" height="315" frameborder="0" allowfullscreen></iframe>
+                            <button type="button" class="btn-remove-video" onclick="removeYouTubeVideo()">❌ Supprimer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <!-- Actions -->
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" onclick="goBack()">
+                    ◀ Retour aux Formations
+                </button>
+                
+                <div class="action-buttons">
+                    <button type="button" class="btn btn-warning" onclick="saveDraft()">
+                        💾 Sauvegarder en Brouillon
+                    </button>
+                    <button type="button" class="btn btn-success" onclick="publishCourse()">
+                        🚀 Publier le Cours
+                    </button>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+
+    <!-- Scripts Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+    
+    <!-- Config Firebase -->
+    <script src="../../../firebase/config.js"></script>
+    
+    <!-- Scripts -->
+    <script src="js/creation.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal de Trading - Crypto-Nitro</title>
+
+    <link rel="icon" type="image/png" href="../../logo/fusee-crypto-nitro.png">
+    
+    <!-- CSS partagé -->
+    <link rel="stylesheet" href="../vu%20ensemble/css/dashboard-main.css">
+    <link rel="stylesheet" href="../vu%20ensemble/css/dashboard-nav.css">
+    
+    <!-- CSS spécifique tableau -->
+    <link rel="stylesheet" href="css/tableau.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body class="dashboard-body">
+    
+    <!-- Header Dashboard -->
+    <header class="dashboard-header">
+        <div class="header-content">
+            <div class="logo-dashboard">
+                <a href="../../index.html">🚀 CryptoTraders Pro</a>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <div class="user-avatar" id="user-avatar">👨‍🚀</div>
+                    <span class="user-name" id="user-name">Astronaute</span>
+                    <div class="user-dropdown">
+                        <a href="../vu%20ensemble/dashboard.html">🏠 Dashboard</a>
+                        <a href="../../index.html" id="logout-btn">🚪 Déconnexion</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Container Principal -->
+    <div class="dashboard-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-user">
+                <div class="sidebar-avatar">👨‍🚀</div>
+                <h3 id="sidebar-user-name">Astronaute</h3>
+                <p class="user-rank">🌟 Cadet Spatial</p>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="../vu%20ensemble/dashboard.html" class="nav-item">
+                    📊 Vue d'ensemble
+                </a>
+                <a href="../formations/formations.html" class="nav-item">
+                    🎓 Formations
+                </a>
+                <a href="../live/live.html" class="nav-item">
+                    📺 Live
+                </a>
+                <a href="../trading/trading.html" class="nav-item">
+                    📈 Trading
+                </a>
+                <a href="tableau.html" class="nav-item active">
+                    📋 Tableau
+                </a>
+                <a href="../portfolio/portfolio.html" class="nav-item">
+                    💼 Portfolio
+                </a>
+                <a href="../parametres/parametres.html" class="nav-item">
+                    ⚙️ Paramètres
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="../../index.html" class="btn btn-secondary btn-full">
+                    🌍 Retour au site
+                </a>
+            </div>
+        </aside>
+        
+        <!-- Contenu Principal -->
+        <main class="dashboard-main">
+            
+            <!-- Section Tableau -->
+            <section class="dashboard-section active" id="section-tableau">
+                
+                <!-- Header moderne avec statistiques -->
+                <div class="modern-header">
+                    <div class="header-title">
+                        <h1>📊 Trading Journal Pro</h1>
+                        <p>Journal vide • Dernière mise à jour : <span id="last-update">04h33</span></p>
+                    </div>
+                    
+                    <!-- Stats En Cours - Version Compacte -->
+                    <div class="current-trades">
+                        <div class="current-header">
+                            <span class="current-title">⏳ En cours</span>
+                            <div class="current-stats">
+                                <span class="current-item">
+                                    <span class="current-number" id="open-trades">0</span> ouverts
+                                </span>
+                                <span class="current-separator">•</span>
+                                <span class="current-item">
+                                    P&L: <span class="current-pnl neutral" id="floating-pnl">$0.00</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ===== AJOUTER CES ONGLETS MOIS ===== -->
+                    <div class="month-navigation">
+                        <div class="month-tabs" id="month-tabs">
+                            <!-- Généré par JS -->
+                        </div>
+                    </div>
+
+                    <!-- Stats Historiques -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-label">Total Trades</div>
+                            <div class="stat-split">
+                                <div class="stat-month">
+                                    <div class="stat-value-small neutral" id="month-total-trades">0</div>
+                                    <div class="stat-period">Ce mois</div>
+                                </div>
+                                <div class="stat-separator">|</div>
+                                <div class="stat-year">
+                                    <div class="stat-value-small neutral" id="year-total-trades">0</div>
+                                    <div class="stat-period">Année</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-label">Gagnants</div>
+                            <div class="stat-split">
+                                <div class="stat-month">
+                                    <div class="stat-value-small neutral" id="month-winning-trades">0</div>
+                                    <div class="stat-period">Ce mois</div>
+                                </div>
+                                <div class="stat-separator">|</div>
+                                <div class="stat-year">
+                                    <div class="stat-value-small neutral" id="year-winning-trades">0</div>
+                                    <div class="stat-period">Année</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-label">Perdants</div>
+                            <div class="stat-split">
+                                <div class="stat-month">
+                                    <div class="stat-value-small neutral" id="month-losing-trades">0</div>
+                                    <div class="stat-period">Ce mois</div>
+                                </div>
+                                <div class="stat-separator">|</div>
+                                <div class="stat-year">
+                                    <div class="stat-value-small neutral" id="year-losing-trades">0</div>
+                                    <div class="stat-period">Année</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-label">Taux de Réussite</div>
+                            <div class="stat-split">
+                                <div class="stat-month">
+                                    <div class="stat-value-small neutral" id="month-win-rate">0%</div>
+                                    <div class="stat-period">Ce mois</div>
+                                </div>
+                                <div class="stat-separator">|</div>
+                                <div class="stat-year">
+                                    <div class="stat-value-small neutral" id="year-win-rate">0%</div>
+                                    <div class="stat-period">Année</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-label">P&L Net</div>
+                            <div class="stat-split">
+                                <div class="stat-month">
+                                    <div class="stat-value-small neutral" id="month-net-pnl">$0.00</div>
+                                    <div class="stat-period">Ce mois</div>
+                                </div>
+                                <div class="stat-separator">|</div>
+                                <div class="stat-year">
+                                    <div class="stat-value-small neutral" id="year-net-pnl">$0.00</div>
+                                    <div class="stat-period">Année</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-label">Meilleur Trade</div>
+                            <div class="stat-split">
+                                <div class="stat-month">
+                                    <div class="stat-value-small neutral" id="month-best-trade">0%</div>
+                                    <div class="stat-period">Ce mois</div>
+                                </div>
+                                <div class="stat-separator">|</div>
+                                <div class="stat-year">
+                                    <div class="stat-value-small neutral" id="year-best-trade">0%</div>
+                                    <div class="stat-period">Année</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contrôles -->
+                <div class="controls">
+                    <div class="left-controls">
+                        <div class="view-toggle">
+                            <button class="toggle-btn active" onclick="TradingTable.switchView('cards')">🎴 Cards</button>
+                            <button class="toggle-btn" onclick="TradingTable.switchView('list')">📋 Liste</button>
+                                <button class="toggle-btn" onclick="TradingTable.switchView('analytics')">📈 Analytics</button>
+                        </div>
+
+                        <div class="action-buttons">
+                            <button class="control-btn btn-add" onclick="TradingTable.addTrade()">➕ Ajouter</button>
+                        </div>
+                    </div>
+
+                    <div class="filters">
+                        <select class="filter-select" id="filter-type" onchange="TradingTable.filterTrades()">
+                            <option value="all">Tous les trades</option>
+                            <option value="profit">Profits uniquement</option>
+                            <option value="loss">Pertes uniquement</option>
+                            <option value="long">Positions Long</option>
+                            <option value="short">Positions Short</option>
+                        </select>
+
+                        <input type="text" class="search-box" placeholder="🔍 Rechercher..." id="search-input" oninput="TradingTable.filterTrades()">
+                    </div>
+                </div>
+
+
+                <!-- Trades En Cours -->
+                <div class="open-trades-section" id="open-trades-section">
+                    <div class="open-trades-header">
+                        <h3>⏳ Positions Ouvertes</h3>
+                        <div class="open-trades-toggle">
+                            <button class="toggle-open-btn" onclick="TradingTable.toggleOpenTrades()">
+                                <span id="toggle-text">🙈 Masquer</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="open-trades-cards" id="open-trades-cards" style="display: grid;">
+                        <!-- Généré par JS -->
+                    </div>
+                </div>
+
+
+                <!-- Vue Cards -->
+                <div class="trading-cards" id="cards-view">
+                    <!-- Généré par JS -->
+                </div>
+
+                <!-- Vue Liste -->
+                <div class="compact-list" id="list-view">
+                    <div class="compact-header">
+                        <div>Token</div>
+                        <div>Position</div>
+                        <div>Entrée/Sortie</div>
+                        <div>P&L</div>
+                        <div>Performance</div>
+                        <div>Actions</div>
+                    </div>
+                    <div id="compact-rows">
+                        <!-- Généré par JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vue Analytics -->
+            <div id="analytics-view" class="analytics-container" style="display: none;">
+                <!-- Section IA Coach -->
+                <div class="ai-coach-section">
+                    <div class="ai-header">
+                        <div class="ai-avatar">🤖</div>
+                        <div class="ai-info">
+                            <h3>AI Trading Coach</h3>
+                            <p id="ai-status">Analyse en cours...</p>
+                        </div>
+                        <div class="ai-mood" id="ai-mood">😊</div>
+                    </div>
+                    
+                    <div class="ai-insights" id="ai-insights">
+                        <div class="insight-card loading">
+                            <div class="insight-icon">🧠</div>
+                            <div class="insight-content">
+                                <h4>Analyse comportementale</h4>
+                                <p>Chargement...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Graphiques -->
+                <div class="charts-grid">
+                    <!-- Performance Chart -->
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>📈 Performance Mensuelle</h3>
+                            <div class="chart-controls">
+                                <button class="chart-btn active" data-period="6m">6M</button>
+                                <button class="chart-btn" data-period="1y">1A</button>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="performance-chart"></canvas>
+                        </div>
+                    </div>
+                
+                    <!-- P&L Distribution -->
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>💰 Distribution P&L</h3>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="pnl-chart"></canvas>
+                        </div>
+                    </div>
+                
+                    <!-- Crypto Performance -->
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>🔥 Top Cryptos</h3>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="crypto-chart"></canvas>
+                        </div>
+                    </div>
+                
+                    <!-- Trading Hours -->
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>⏰ Performance par Heure</h3>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="hours-chart"></canvas>
+                        </div>
+                    </div>
+                
+                    <!-- Win Rate Evolution -->
+                    <div class="chart-card span-2">
+                        <div class="chart-header">
+                            <h3>🎯 Évolution Win Rate</h3>
+                            <div class="chart-legend">
+                                <span class="legend-item win">● Victoires</span>
+                                <span class="legend-item loss">● Défaites</span>
+                                <span class="legend-item rate">— Win Rate</span>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="winrate-chart"></canvas>
+                        </div>
+                    </div>
+                
+                    <!-- Risk Analysis -->
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>⚡ Analyse des Risques</h3>
+                        </div>
+                        <div class="risk-metrics">
+                            <div class="risk-item">
+                                <div class="risk-label">Max Drawdown</div>
+                                <div class="risk-value" id="max-drawdown">-12.5%</div>
+                            </div>
+                            <div class="risk-item">
+                                <div class="risk-label">Ratio Sharpe</div>
+                                <div class="risk-value" id="sharpe-ratio">1.8</div>
+                            </div>
+                            <div class="risk-item">
+                                <div class="risk-label">Volatilité</div>
+                                <div class="risk-value" id="volatility">15.2%</div>
+                            </div>
+                            <div class="risk-gauge" id="risk-gauge">
+                                <div class="gauge-fill"></div>
+                                <div class="gauge-label">Risque Global</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        <!-- Modal Ajouter Trade -->
+        <div class="add-trade-modal" id="add-trade-modal">
+            <div class="add-trade-modal-content">
+                <div class="add-trade-header">
+                    <h3>➕ Ouvrir une Position</h3>
+                    <button class="modal-close" onclick="TradingTable.closeAddModal()">✕</button>
+                </div>
+            
+                <form class="add-trade-form" id="add-trade-form">
+                    <!-- Token et Position -->
+                    <div class="form-section">
+                        <h4>📈 Informations de base</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Token</label>
+                                <div class="crypto-selector-container">
+                                    <input type="text" id="crypto-search-trade" placeholder="Ex: Bitcoin, BTC, ETH..." autocomplete="off" required>
+                                    <input type="hidden" id="trade-token">
+                                    <div class="crypto-dropdown-trade" id="crypto-dropdown-trade"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Position</label>
+                                <select id="trade-position" required>
+                                    <option value="">Choisir...</option>
+                                    <option value="Long ↑">Long ↑</option>
+                                    <option value="Short ↓">Short ↓</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Montant ($)</label>
+                                <input type="number" id="trade-montant" placeholder="100.00" step="0.01" min="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Prix d'ouverture ($)</label>
+                                <input type="number" id="trade-prix-ouv" placeholder="65000.00" step="0.000001" min="0" required>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Levier -->
+                    <div class="form-section">
+                        <h4>⚡ Levier</h4>
+                        <div class="leverage-container">
+                            <div class="leverage-header">
+                                <div class="leverage-display">x<span id="leverage-value">1</span></div>
+                                <div class="leverage-risk" id="leverage-risk">Faible risque</div>
+                            </div>
+                            
+                            <div class="leverage-slider-wrapper">
+                                <div class="leverage-track">
+                                    <div class="leverage-progress" id="leverage-progress"></div>
+                                </div>
+                                <input type="range" 
+                                       id="trade-levier-slider" 
+                                       min="1" 
+                                       max="50" 
+                                       value="1" 
+                                       step="1"
+                                       class="leverage-input">
+                            </div>
+                        </div>
+                        <input type="hidden" id="trade-levier" required>
+                    </div>
+                
+                    <!-- Date et Heure -->
+                    <div class="form-section">
+                        <h4>🕐 Ouverture</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Date d'ouverture</label>
+                                <input type="date" id="trade-date-ouv" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Heure d'ouverture</label>
+                                <input type="time" id="trade-heure-ouv" required>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Notes stratégie -->
+                    <div class="form-section">
+                        <h4>📝 Notes de Stratégie</h4>
+                        <div class="form-group">
+                            <label>Plan de trade (optionnel)</label>
+                            <textarea id="trade-strategy" placeholder="Ex: TP prévu à 68000$, SL à 63000$, cassure triangle..." rows="3"></textarea>
+                        </div>
+                    </div>
+                
+                    <div class="form-actions">
+                        <button type="button" class="btn-cancel" onclick="TradingTable.closeAddModal()">Annuler</button>
+                        <button type="submit" class="btn-save">🚀 Ouvrir Position</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+
+
+
+
+        </main>
+        
+        <!-- Navigation Mobile -->
+        <nav class="mobile-nav">
+            <div class="mobile-nav-items">
+                <a href="../vu%20ensemble/dashboard.html" class="mobile-nav-item">
+                    <span class="icon">📊</span>
+                    <span class="label">Dashboard</span>
+                </a>
+                <a href="../formations/formations.html" class="mobile-nav-item">
+                    <span class="icon">🎓</span>
+                    <span class="label">Formation</span>
+                </a>
+                <a href="../live/live.html" class="mobile-nav-item">
+                    <span class="icon">📺</span>
+                    <span class="label">Live</span>
+                </a>
+                <a href="../trading/trading.html" class="mobile-nav-item">
+                    <span class="icon">📈</span>
+                    <span class="label">Trading</span>
+                </a>
+                <a href="tableau.html" class="mobile-nav-item active">
+                    <span class="icon">📋</span>
+                    <span class="label">Tableau</span>
+                </a>
+                <a href="../portfolio/portfolio.html" class="mobile-nav-item">
+                    <span class="icon">💼</span>
+                    <span class="label">Portfolio</span>
+                </a>
+                <a href="../parametres/parametres.html" class="mobile-nav-item">
+                    <span class="icon">⚙️</span>
+                    <span class="label">Profil</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Scripts Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    
+    <!-- Config Firebase -->
+    <script src="../../firebase/config.js"></script>
+    
+    <!-- Auth Firebase -->
+    <script src="../../firebase/auth.js"></script>
+    <script src="../trading/js/crypto-loader.js"></script>
+    
+    <!-- Script Tableau -->
+    <script src="js/tableau.js"></script>
+
+    <!-- POINTS SUSTEM -->
+    <script src="../admin/points/js/points-system.js"></script>
+
+</body>
+</html>

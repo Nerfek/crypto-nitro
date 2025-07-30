@@ -1,0 +1,1051 @@
+/* ===== STYLES.CSS - STYLES PRINCIPAUX ===== */
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #ffffff;
+    line-height: 1.6;
+    overflow: hidden;
+    background: #000011;
+    cursor: auto;
+    height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* HEADER */
+header {
+    background: rgba(0, 0, 17, 0.95);
+    backdrop-filter: blur(20px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, #00ff88, #00ccff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 0.5rem;
+    background: rgba(0, 255, 136, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    padding: 0.5rem;
+    border: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background: linear-gradient(45deg, #00ff88, #00ccff);
+    color: #000011;
+    transform: translateY(-2px);
+}
+
+/* SECTIONS */
+.main-container {
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.scroll-section {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(100px) scale(0.95);
+    transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 1;
+    padding-top: 80px;
+}
+
+.scroll-section.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    z-index: 10;
+}
+
+/* HERO */
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    z-index: 10;
+}
+
+.hero-text h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #00ff88, #00ccff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    animation: titlePulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes titlePulse {
+    from { text-shadow: 0 0 20px rgba(0, 255, 136, 0.3); }
+    to { text-shadow: 0 0 30px rgba(0, 255, 136, 0.6); }
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #ffffff;
+}
+
+/* BITCOIN WIDGET */
+.btc-price-widget {
+    background: rgba(0, 255, 136, 0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 15px;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    max-width: 300px;
+    animation: spaceGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes spaceGlow {
+    from { border-color: rgba(0, 255, 136, 0.3); }
+    to { border-color: rgba(0, 255, 136, 0.6); }
+}
+
+.btc-price-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.crypto-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+}
+
+.btc-logo {
+    background: linear-gradient(45deg, #f7931a, #ffb347);
+    animation: cryptoOrbit 4s linear infinite;
+}
+
+@keyframes cryptoOrbit {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.btc-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.btc-label {
+    font-size: 0.9rem;
+    color: #ffffff;
+}
+
+.btc-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #00ff88;
+}
+
+.btc-change {
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.btc-change.positive { color: #00ff88; }
+.btc-change.negative { color: #ff4757; }
+
+/* BOUTONS */
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 0.7rem 1.5rem;  /* ← Plus petit */
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-size: 0.9rem;  /* ← Plus petit */
+    position: relative;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .btn {
+        padding: 0.4rem 0.8rem !important;  /* ← Encore plus petit */
+        font-size: 0.7rem !important;       /* ← Encore plus petit */
+    }
+    
+    .auth-buttons {
+        margin: 0.3rem 0;
+    }
+
+
+    /* Plus d'espace pour le titre */
+    .scroll-section {
+        padding-top: 120px !important;  /* ← Plus d'espace en haut */
+    }
+
+    /* Widget Bitcoin */
+    .btc-price-widget {
+        margin: 1.5rem auto !important;
+        max-width: 280px !important;
+    }
+    
+    /* Container avec plus d'espace */
+    .btc-price-container {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.8rem !important;  /* ← Plus d'espace = logo plus à droite */
+    }
+    
+    /* Centre SEULEMENT le texte Bitcoin */
+    .btc-info {
+        text-align: center !important;
+        flex: 1 !important;
+    }
+    
+    /* Logo plus gros */
+    .crypto-logo {
+        flex-shrink: 0 !important;
+        width: 60px !important;   /* ← Plus gros (était 40px) */
+        height: 60px !important;  /* ← Plus gros */
+        font-size: 1.8rem !important;  /* ← Texte plus gros */
+    }
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #00ff88, #00ccff);
+    color: #000011;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px) scale(1.05);
+}
+
+.btn-secondary {
+    background: rgba(0, 255, 136, 0.1);
+    color: #00ff88;
+    border: 2px solid #00ff88;
+    backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+    background: rgba(0, 255, 136, 0.2);
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* TERRE AVEC SATELLITES */
+.hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.earth-globe {
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #4A90E2 0%, #357ABD 40%, #2E5984 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    animation: earthRotation 20s linear infinite;
+    box-shadow: 0 0 50px rgba(74, 144, 226, 0.3), inset -20px -20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.earth-globe::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: 
+        radial-gradient(circle at 40% 40%, rgba(34, 139, 34, 0.8) 0%, transparent 30%),
+        radial-gradient(circle at 60% 20%, rgba(34, 139, 34, 0.6) 0%, transparent 25%),
+        radial-gradient(circle at 20% 70%, rgba(34, 139, 34, 0.7) 0%, transparent 20%);
+    animation: earthRotation 30s linear infinite;
+}
+
+.crypto-orbit {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border: 2px solid rgba(0, 255, 136, 0.2);
+    border-radius: 50%;
+    animation: orbitRotation 15s linear infinite;
+}
+
+.crypto-satellite {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.crypto-satellite:hover {
+    transform: scale(1.2);
+    z-index: 20;
+}
+
+.crypto-satellite.bitcoin {
+    background: linear-gradient(45deg, #f7931a, #ffb347);
+    color: #fff;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.crypto-satellite.ethereum {
+    background: linear-gradient(45deg, #627eea, #8ab4f8);
+    color: #fff;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.crypto-satellite.solana {
+    background: linear-gradient(45deg, #9945ff, #14f195);
+    color: #fff;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.crypto-satellite.tao {
+    background: linear-gradient(45deg, #ff6b35, #ffd700);
+    color: #000;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+@keyframes orbitRotation {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* SECTIONS CONTENT */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    background: linear-gradient(45deg, #00ff88, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    animation: fadeInUp 1s ease-out;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.service-card {
+    background: rgba(0, 255, 136, 0.1);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(15px);
+    animation: cardSlideIn 0.8s ease-out;
+    animation-fill-mode: both;
+}
+
+.service-card:nth-child(1) { animation-delay: 0.1s; }
+.service-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes cardSlideIn {
+    from { opacity: 0; transform: translateY(50px) scale(0.9); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.service-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    border-color: #00ff88;
+    background: rgba(0, 255, 136, 0.15);
+}
+
+.service-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.service-card h3 {
+    color: #00ff88;
+    margin-bottom: 1rem;
+}
+
+.service-card p {
+    color: #ffffff;
+}
+
+/* OFFRES */
+.offers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.offer-card {
+    background: rgba(0, 255, 136, 0.1);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    backdrop-filter: blur(15px);
+    animation: cardSlideIn 0.8s ease-out;
+    animation-fill-mode: both;
+}
+
+.offer-card:nth-child(1) { animation-delay: 0.1s; }
+.offer-card:nth-child(2) { animation-delay: 0.2s; }
+.offer-card:nth-child(3) { animation-delay: 0.3s; }
+
+.offer-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: #00ff88;
+    background: rgba(0, 255, 136, 0.15);
+}
+
+.offer-card.featured {
+    border-color: #00ff88;
+    transform: scale(1.03);
+    background: rgba(0, 255, 136, 0.15);
+}
+
+.offer-card.featured::after {
+    content: '⭐ POPULAIRE';
+    position: absolute;
+    top: 15px;
+    right: -35px;
+    background: linear-gradient(45deg, #00ff88, #00ccff);
+    color: #000011;
+    padding: 5px 40px;
+    transform: rotate(45deg);
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+.offer-card h3 {
+    color: #00ff88;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.offer-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #00ff88;
+    margin-bottom: 1rem;
+    animation: priceGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes priceGlow {
+    from { text-shadow: 0 0 15px rgba(0, 255, 136, 0.5); }
+    to { text-shadow: 0 0 25px rgba(0, 255, 136, 0.8); }
+}
+
+.offer-price span {
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+.offer-features {
+    list-style: none;
+    margin: 1rem 0;
+    flex-grow: 1;
+}
+
+.offer-features li {
+    padding: 0.4rem 0;
+    color: #ffffff;
+    font-size: 0.9rem;
+    opacity: 0;
+    animation: featureSlideIn 0.5s ease-out forwards;
+}
+
+.offer-features li:nth-child(1) { animation-delay: 0.1s; }
+.offer-features li:nth-child(2) { animation-delay: 0.2s; }
+.offer-features li:nth-child(3) { animation-delay: 0.3s; }
+.offer-features li:nth-child(4) { animation-delay: 0.4s; }
+.offer-features li:nth-child(5) { animation-delay: 0.5s; }
+.offer-features li:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes featureSlideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.offer-features li:before {
+    content: '🚀';
+    margin-right: 0.5rem;
+}
+
+/* ABOUT ET CONTACT */
+.about-content,
+.contact-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.about-content p,
+.contact-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #ffffff;
+    animation: fadeInUp 1s ease-out;
+}
+
+/* INDICATEUR SPATIAL */
+.space-indicator {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.indicator-level {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 255, 136, 0.5);
+    background: rgba(0, 255, 136, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+}
+
+.indicator-level:hover {
+    transform: scale(1.1);
+    border-color: #00ff88;
+}
+
+.indicator-level.active {
+    background: rgba(0, 255, 136, 0.3);
+    transform: scale(1.2);
+    border-color: #00ff88;
+}
+
+.planet-icon {
+    font-size: 1.5rem;
+    animation: planetFloat 3s ease-in-out infinite;
+}
+
+@keyframes planetFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .offers-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        max-width: 400px;
+    }
+    
+    .offer-card.featured {
+        transform: scale(1);
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .earth-globe {
+        width: 280px;
+        height: 280px;
+    }
+
+    .crypto-orbit {
+        width: 350px;
+        height: 350px;
+    }
+
+    .crypto-satellite {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .space-indicator {
+        right: 15px;
+        gap: 15px;
+    }
+
+    .indicator-level {
+        width: 40px;
+        height: 40px;
+    }
+
+    .planet-icon {
+        font-size: 1.2rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .btc-price-widget {
+        max-width: 100%;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+
+    .earth-globe {
+        width: 220px;
+        height: 220px;
+    }
+
+    .crypto-orbit {
+        width: 280px;
+        height: 280px;
+    }
+
+    .space-indicator {
+        right: 10px;
+    }
+
+    .indicator-level {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 255, 136, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #00ff88, #00ccff);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #00ccff, #00ff88);
+}
+
+
+/* ===== MOBILE HOME PAGE FIXES ===== */
+@media (max-width: 768px) {
+    /* Hero section mobile */
+    .hero-content {
+        flex-direction: column !important;
+        text-align: center !important;
+    }
+    
+    .hero-text h1 {
+        font-size: 2rem !important;
+        line-height: 1.2 !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .hero-text p {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 2rem !important;
+    }
+    
+    /* Navigation mobile */
+    .nav-links {
+        display: none !important;
+    }
+    
+    /* CTA buttons mobile */
+    .cta-buttons {
+        flex-direction: column !important;
+        gap: 1rem !important;
+    }
+    
+    .btn {
+        width: 100% !important;
+        padding: 15px 20px !important;
+        font-size: 1rem !important;
+    }
+}
+
+/* ===== FIX SIDEBAR MOBILE INDEX ===== */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none !important;
+    }
+    
+    .user-menu {
+        position: relative !important;
+    }
+    
+    .user-dropdown {
+        display: none !important;
+    }
+    
+    .user-menu.show .user-dropdown {
+        display: block !important;
+        position: absolute !important;
+        top: 50px !important;
+        right: 0 !important;
+        background: rgba(0, 0, 17, 0.95) !important;
+        border: 1px solid rgba(0, 255, 136, 0.3) !important;
+        border-radius: 10px !important;
+        z-index: 10001 !important;
+    }
+}
+
+/* ===== CACHER NOTIFICATION DASHBOARD MOBILE ===== */
+@media (max-width: 768px) {
+
+    /* FORCER L'AFFICHAGE DU BOUTON PWA */
+    #pwa-install-btn {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        z-index: 10000 !important;
+    }
+    
+    /* Si c'est une div avec du texte spécifique */
+    div:contains("Accéder au dashboard") {
+        display: none !important;
+    }
+}
+
+/* ===== LOGO MOBILE PLUS PETIT ===== */
+@media (max-width: 768px) {
+    .logo {
+        font-size: 1.2rem !important; /* Au lieu de la taille desktop */
+    }
+    
+    /* Si ça ne marche pas, essaie aussi : */
+    .logo a {
+        font-size: 1.2rem !important;
+    }
+    
+    /* Header plus compact */
+    #header {
+        padding: 0 1rem !important;
+    }
+    
+    .container nav {
+        padding: 0.5rem 0 !important;
+    }
+}
+
+
+/* ===== OPTIMISATION MOBILE - DÉSACTIVER ANIMATIONS LOURDES ===== */
+@media (max-width: 768px) {
+    /* Désactiver les animations coûteuses */
+    .space-background {
+        animation: none !important;
+        background: #000011 !important;
+    }
+    
+    .stars-field {
+        display: none !important;
+    }
+    
+    .earth-globe::before {
+        animation: none !important;
+    }
+    
+    .crypto-orbit {
+        animation: none !important;
+    }
+    
+    .rocket::before {
+        animation: rocketFloat 4s ease-in-out infinite alternate !important; /* Plus lent */
+    }
+    
+    .rocket-trail {
+        animation: none !important;
+    }
+    
+    /* Simplifier les cartes */
+    .service-card, .offer-card {
+        animation: none !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    
+    .service-card:hover, .offer-card:hover {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+    
+    /* Curseur normal sur mobile */
+    .cursor, .cursor-trail {
+        display: none !important;
+    }
+    
+    /* Simplifier les effets */
+    .btc-logo {
+        animation: none !important;
+    }
+    
+    .service-icon {
+        animation: none !important;
+    }
+}
+
+/* ===== FIX MOBILE - PERMETTRE SCROLL ET CACHER FUSÉE ===== */
+@media (max-width: 768px) {
+    
+    /* PERMETTRE LE SCROLL SUR MOBILE */
+    body {
+        overflow: auto !important;
+        height: auto !important;
+    }
+    
+    .main-container {
+        height: auto !important;
+        overflow: visible !important;
+    }
+    
+    .scroll-section {
+        position: relative !important; /* Au lieu d'absolute */
+        height: auto !important;
+        min-height: 100vh !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        display: block !important;
+        padding: 100px 1rem 2rem 1rem !important;
+    }
+    
+    /* CACHER LA FUSÉE ET SA TRAÎNÉE */
+    .rocket, .rocket-trail {
+        display: none !important;
+    }
+    
+    /* ÉTOILES PLUS DISCRÈTES */
+    .star.mobile {
+        opacity: 0.3 !important;
+        animation: mobileStarTwinkle 4s ease-in-out infinite !important;
+    }
+    
+    @keyframes mobileStarTwinkle {
+        0%, 100% { opacity: 0.1; }
+        50% { opacity: 0.4; }
+    }
+    
+    /* CARTES MIEUX ADAPTÉES */
+    .services-grid, .offers-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        padding: 0 !important;
+        margin: 2rem 0 !important;
+    }
+    
+    .service-card, .offer-card {
+        margin-bottom: 1rem !important;
+        padding: 1.5rem !important;
+        min-height: auto !important;
+        transform: none !important;
+        animation: none !important;
+    }
+    
+    /* NAVIGATION MOBILE EN BAS FIXE */
+    .space-indicator {
+        bottom: 20px !important;
+        top: auto !important;
+        right: 50% !important;
+        transform: translateX(50%) !important;
+        flex-direction: row !important;
+        gap: 10px !important;
+    }
+    
+    .indicator-level {
+        width: 35px !important;
+        height: 35px !important;
+    }
+    
+    .planet-icon {
+        font-size: 1rem !important;
+    }
+    
+    /* DÉSACTIVER NAVIGATION MOLETTE */
+    .main-container {
+        pointer-events: auto !important;
+    }
+    
+    /* CONTAINER RESPONSIVE */
+    .container {
+        padding: 0 1rem !important;
+        max-width: 100% !important;
+    }
+    
+    /* HERO SECTION MOBILE */
+    .hero-content {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+        text-align: center !important;
+    }
+    
+    .hero-text h1 {
+        font-size: 2rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    .hero-text p {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    /* BOUTONS CTA MOBILE */
+    .cta-buttons {
+        flex-direction: column !important;
+        gap: 1rem !important;
+        align-items: center !important;
+    }
+    
+    .btn {
+        width: 100% !important;
+        max-width: 280px !important;
+        padding: 15px 20px !important;
+        font-size: 1rem !important;
+    }
+}

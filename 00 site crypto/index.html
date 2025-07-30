@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="logo/fusee-crypto-nitro.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <title>CryptoTraders Pro - Formation & Outils Trading</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="space-effects.css">
+    <link rel="stylesheet" href="user-auth.css">
+
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="/pwa/manifest.json">
+    <meta name="theme-color" content="#00ff88">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="CryptoTraders">
+    <link rel="apple-touch-icon" href="/pwa/icons/apple-touch-icon.png">
+
+    <!-- PWA Install Script -->
+    <script src="/pwa/install.js"></script>
+</head>
+<body>
+    <!-- Curseur spatial personnalisé -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-trail" id="cursor-trail"></div>
+
+    <!-- ÉLÉMENTS SPATIAUX -->
+    <div class="space-background"></div>
+    <div class="earth"></div>
+    <div class="moon"></div>
+    <div class="rocket"></div>
+    <div class="rocket-trail"></div>
+    <div class="stars-field" id="stars-field"></div>
+
+    <!-- HEADER AVEC AUTHENTIFICATION -->
+    <header id="header">
+        <nav class="container">
+            <div class="logo" onclick="scrollToSection(0)">🚀 CryptoTraders Pro</div>
+            
+            <!-- Navigation principale (visible quand non connecté) -->
+            <ul class="nav-links" id="main-nav">
+                <li><a href="javascript:void(0)" onclick="scrollToSection(0)" class="active">🌍 Terre</a></li>
+                <li><a href="javascript:void(0)" onclick="scrollToSection(1)">🛰️ Services</a></li>
+                <li><a href="javascript:void(0)" onclick="scrollToSection(2)">🚀 Offres</a></li>
+                <li><a href="javascript:void(0)" onclick="scrollToSection(3)">🌌 À propos</a></li>
+                <li><a href="javascript:void(0)" onclick="scrollToSection(4)">🌙 Contact</a></li>
+            </ul>
+
+            <!-- Boutons d'authentification -->
+            <div class="auth-buttons" id="auth-buttons">
+                <a href="connexion/connexion.html" class="btn btn-primary">🚀 Connexion</a>
+            </div>
+
+            <!-- Menu utilisateur connecté (caché par défaut) -->
+            <div class="user-menu" id="user-menu" style="display: none;">
+                <div class="user-avatar" id="user-avatar">👨‍🚀</div>
+                <div class="user-info">
+                    <span class="user-name" id="user-name">Astronaute</span>
+                    <div class="user-dropdown">
+                        <a href="javascript:void(0)" id="dashboard-btn">📊 Tableau de bord</a>
+                        <a href="javascript:void(0)" id="profile-btn">⚙️ Profil</a>
+                        <a href="javascript:void(0)" id="logout-btn">🚪 Déconnexion</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- CONTAINER PRINCIPAL -->
+    <div class="main-container" id="main-container">
+        
+        <!-- Section 1 - Surface de la Terre -->
+        <section class="scroll-section earth-section active" id="section-0">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>🚀 Décollage vers le Succès Crypto</h1>
+                        <p>Embarquez pour un voyage extraordinaire dans l'univers du trading crypto. De la Terre à la Lune, maîtrisez les marchés avec notre équipage d'experts spatiaux.</p>
+                        
+                        <!-- Prix Bitcoin en temps réel -->
+                        <div class="btc-price-widget">
+                            <div class="btc-price-container">
+                                <div class="crypto-logo btc-logo">₿</div>
+                                <div class="btc-info">
+                                    <span class="btc-label">Bitcoin (BTC)</span>
+                                    <span class="btc-price" id="btc-price">Chargement...</span>
+                                    <span class="btc-change" id="btc-change">+0.00%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cta-buttons">
+                            <a href="javascript:void(0)" onclick="scrollToSection(2)" class="btn btn-primary">🚀 Décoller maintenant</a>
+                            <a href="javascript:void(0)" class="btn btn-secondary">🎮 Mission test</a>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="earth-globe">
+                            <div class="crypto-orbit">
+                                <div class="crypto-satellite bitcoin">₿</div>
+                                <div class="crypto-satellite ethereum">Ξ</div>
+                                <div class="crypto-satellite solana">◎</div>
+                                <div class="crypto-satellite tao">τ</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2 - Atmosphère / Services -->
+        <section class="scroll-section atmosphere-section" id="section-1">
+            <div class="container">
+                <h2 class="section-title">🛰️ Nos Services Spatiaux</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">📡</div>
+                        <h3>Station de Formation</h3>
+                        <p>Formation en orbite avec nos commandants experts. Analyse technique spatiale et stratégies de navigation dans l'espace crypto.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🛸</div>
+                        <h3>Cockpit de Trading Pro</h3>
+                        <p>Interface de pilotage avancée avec radar crypto, système de navigation automatique et alertes de tempête solaire.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🌟</div>
+                        <h3>Signaux Galactiques</h3>
+                        <p>Transmissions depuis l'espace profond avec coordonnées d'entrée et de sortie pour capturer les météorites les plus rentables.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3 - Espace / Offres -->
+        <section class="scroll-section space-section" id="section-2">
+            <div class="container">
+                <h2 class="section-title">🚀 Nos Missions Spatiales</h2>
+                <div class="offers-grid">
+                    <div class="offer-card">
+                        <h3>🌍 Cadet Terrestre</h3>
+                        <div class="offer-price">49€<span>/mois</span></div>
+                        <ul class="offer-features">
+                            <li>Accès à la base spatiale</li>
+                            <li>Formation de pilotage de base</li>
+                            <li>3 missions par semaine</li>
+                            <li>Support radio</li>
+                        </ul>
+                        <a href="javascript:void(0)" class="btn btn-primary">🚀 Décoller</a>
+                    </div>
+
+                    <div class="offer-card featured">
+                        <h3>🛰️ Astronaute</h3>
+                        <div class="offer-price">99€<span>/mois</span></div>
+                        <ul class="offer-features">
+                            <li>Tout du pack Cadet</li>
+                            <li>Accès cockpit professionnel</li>
+                            <li>Formations EVA avancées</li>
+                            <li>Missions quotidiennes</li>
+                            <li>Analyse astro-technique</li>
+                            <li>Support prioritaire Mission Control</li>
+                        </ul>
+                        <a href="javascript:void(0)" class="btn btn-primary">🛸 Rejoindre l'équipage</a>
+                    </div>
+
+                    <div class="offer-card">
+                        <h3>🌙 Commandant Lunaire</h3>
+                        <div class="offer-price">199€<span>/mois</span></div>
+                        <ul class="offer-features">
+                            <li>Tout du pack Astronaute</li>
+                            <li>Coaching spatial 1-on-1</li>
+                            <li>Stratégies sur mesure</li>
+                            <li>Accès anticipé nouvelles technologies</li>
+                            <li>Groupe élite lunar</li>
+                            <li>Support 24/7 depuis la Lune</li>
+                        </ul>
+                        <a href="javascript:void(0)" class="btn btn-primary">🌙 Mission Lune</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4 - Espace profond / À propos -->
+        <section class="scroll-section deep-space-section" id="section-3">
+            <div class="container">
+                <h2 class="section-title">🌌 Notre Équipage Galactique</h2>
+                <div class="about-content">
+                    <p>Nous sommes une équipe d'explorateurs spatiaux expérimentés qui naviguent dans les confins de l'univers crypto. Notre mission : vous guider à travers les astéroïdes volatils vers les trésors cachés de la galaxie financière.</p>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon">👨‍🚀</div>
+                            <h3>Commandant de Station</h3>
+                            <p>Formation en apesanteur dans l'espace profond, analyse de marchés galactiques et pilotage expert pour tous niveaux d'astronautes.</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">🔧</div>
+                            <h3>Ingénieur Spatial</h3>
+                            <p>Développement de technologies de pointe avec IA quantique et systèmes automatisés pour explorer les nébuleuses du marché.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5 - Surface de la Lune / Contact -->
+        <section class="scroll-section moon-section" id="section-4">
+            <div class="container">
+                <h2 class="section-title">🌙 Base Lunaire - Contact</h2>
+                <div class="contact-content">
+                    <p>Une question depuis la Lune ? Besoin d'assistance pour votre retour sur Terre ? Contactez notre base lunaire !</p>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon">📡</div>
+                            <h3>Fréquence Radio</h3>
+                            <p>Rejoignez notre canal radio spatial pour communiquer avec l'équipage et la communauté d'astronautes crypto.</p>
+                            <a href="javascript:void(0)" class="btn btn-secondary">📻 Syntoniser</a>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">🛰️</div>
+                            <h3>Transmission Satellite</h3>
+                            <p>Contactez-nous par transmission satellite pour toute demande commerciale ou support technique depuis l'espace.</p>
+                            <a href="mailto:contact@cryptotraders-pro.com" class="btn btn-secondary">📡 Transmettre</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Indicateur de voyage spatial -->
+    <div class="space-indicator">
+        <div class="indicator-level active" onclick="scrollToSection(0)" title="🌍 Terre">
+            <div class="planet-icon earth-icon">🌍</div>
+        </div>
+        <div class="indicator-level" onclick="scrollToSection(1)" title="🛰️ Atmosphère">
+            <div class="planet-icon atmosphere-icon">🛰️</div>
+        </div>
+        <div class="indicator-level" onclick="scrollToSection(2)" title="🚀 Espace">
+            <div class="planet-icon space-icon">🚀</div>
+        </div>
+        <div class="indicator-level" onclick="scrollToSection(3)" title="🌌 Espace profond">
+            <div class="planet-icon deep-icon">🌌</div>
+        </div>
+        <div class="indicator-level" onclick="scrollToSection(4)" title="🌙 Lune">
+            <div class="planet-icon moon-icon">🌙</div>
+        </div>
+    </div>
+
+<!-- Firebase CDN EN PREMIER -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<!-- Config Firebase AVANT tout -->
+<script src="firebase/config.js"></script>
+
+<!-- PROTECTION SESSION (NOUVEAU) -->
+<script src="firebase/session-protection.js"></script>
+
+<!-- Vos scripts -->
+<script src="main.js"></script>
+<script src="space-animations.js"></script>
+
+
+<!-- Auth Firebase EN DERNIER -->
+<script src="firebase/auth.js"></script>
+
+</body>
+</html>

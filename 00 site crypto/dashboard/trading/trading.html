@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading - Crypto-Nitro</title>
+    
+    <link rel="icon" type="image/png" href="../../logo/fusee-crypto-nitro.png">
+
+    <!-- CSS Trading -->
+    <link rel="stylesheet" href="../vu ensemble/css/dashboard-main.css">
+    <link rel="stylesheet" href="../vu ensemble/css/dashboard-nav.css">
+    <link rel="stylesheet" href="css/trading.css">
+    
+    <!-- TradingView Widget -->
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+</head>
+<body class="dashboard-body">
+    
+    <!-- Header Dashboard -->
+    <header class="dashboard-header">
+        <div class="header-content">
+            <div class="logo-dashboard">
+                <a href="../../index.html">🚀 CryptoTraders Pro</a>
+            </div>
+            
+            <div class="header-right">
+                <div class="user-info">
+                    <div class="user-avatar" id="user-avatar">👨‍🚀</div>
+                    <span class="user-name" id="user-name">Astronaute</span>
+                    <div class="user-dropdown">
+                        <a href="../vu ensemble/dashboard.html">📊 Dashboard</a>
+                        <a href="../../index.html" id="logout-btn">🚪 Déconnexion</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Container Principal -->
+    <div class="dashboard-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-user">
+                <div class="sidebar-avatar">👨‍🚀</div>
+                <h3 id="sidebar-user-name">Astronaute</h3>
+                <p class="user-rank">🚀 Trader Spatial</p>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="../vu ensemble/dashboard.html" class="nav-item">
+                    📊 Vue d'ensemble
+                </a>
+                <a href="../formations/formations.html" class="nav-item">
+                    🎓 Formations
+                </a>
+                <a href="../live/live.html" class="nav-item">
+                    📺 Live
+                </a>
+                <a href="javascript:void(0)" class="nav-item active">
+                    📈 Trading
+                </a>
+                <a href="../tableau/tableau.html" class="nav-item">
+                    📋 Tableau
+                </a>
+                <a href="../portfolio/portfolio.html" class="nav-item">
+                    💼 Portfolio
+                </a>
+                <a href="../parametres/parametres.html" class="nav-item">
+                    ⚙️ Paramètres
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="../../index.html" class="btn btn-secondary btn-full">
+                    🌍 Retour au site
+                </a>
+            </div>
+        </aside>
+
+        <!-- Contenu Principal Trading -->
+        <main class="dashboard-main">
+            
+            <!-- Header Crypto avec prix temps réel -->
+            <div class="crypto-header" id="crypto-header">
+                <div class="crypto-main-info">
+                    <div class="crypto-main-icon">
+                        <img src="https://assets.coincap.io/assets/icons/btc@2x.png" 
+                             alt="BTC" 
+                             style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                        <span style="color: #f7931a; font-size: 1.8rem; font-weight: bold; display: none; width: 48px; height: 48px; align-items: center; justify-content: center;">₿</span>
+                    </div>
+                    <div class="crypto-price-info">
+                        <h2>Bitcoin / USDT</h2>
+                        <div class="crypto-price-row">
+                            <span class="crypto-current-price">Chargement...</span>
+                            <span class="crypto-change-24h">+0.00%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="crypto-stats">
+                    <div class="stat-group">
+                        <span class="stat-label">24h Haut</span>
+                        <span class="stat-value">---</span>
+                    </div>
+                    <div class="stat-group">
+                        <span class="stat-label">24h Bas</span>
+                        <span class="stat-value">---</span>
+                    </div>
+                    <div class="stat-group">
+                        <span class="stat-label">Volume 24h</span>
+                        <span class="stat-value">---</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interface Trading -->
+            <div class="trading-interface">
+                
+                <!-- Graphique TradingView -->
+                <div class="trading-chart-container">
+                    <div id="trading-chart"></div>
+                </div>
+
+                <!-- Contrôles Trading -->
+                <div class="trading-controls">
+                    
+                    <!-- Portfolio Stats -->
+                    <div class="trading-portfolio">
+                        <h3>💰 Portfolio Virtuel</h3>
+                        <div class="portfolio-stats">
+                            <div class="stat-item">
+                                <label>💰 Solde disponible:</label>
+                                <span class="trading-balance" id="trading-balance">$500.00</span>
+                            </div>
+                            <div class="stat-item">
+                                <label>⚡ Marge utilisée:</label>
+                                <span class="trading-margin" id="trading-margin">$0.00</span>
+                            </div>
+                            <div class="stat-item">
+                                <label>📊 Valeur totale:</label>
+                                <span class="trading-total-value" id="trading-total-value">$500.00</span>
+                            </div>
+                            <div class="stat-item">
+                                <label>📈 P&L:</label>
+                                <span class="trading-pnl" id="trading-pnl">$0.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sélecteur Crypto -->
+                    <div class="crypto-selector">
+                        <h3>🚀 Cryptos</h3>
+                        <div class="crypto-list" id="crypto-list">
+                            <div class="crypto-item selected" data-symbol="BTCUSDT" data-name="Bitcoin" data-icon="₿">
+                                <span class="crypto-icon">₿</span>
+                                <div class="crypto-info">
+                                    <strong>BTC</strong>
+                                    <small>Bitcoin</small>
+                                </div>
+                                <span class="crypto-price">$---</span>
+                            </div>
+                            <div class="crypto-item" data-symbol="ETHUSDT" data-name="Ethereum" data-icon="Ξ">
+                                <span class="crypto-icon">Ξ</span>
+                                <div class="crypto-info">
+                                    <strong>ETH</strong>
+                                    <small>Ethereum</small>
+                                </div>
+                                <span class="crypto-price">$---</span>
+                            </div>
+                            <div class="crypto-item" data-symbol="SOLUSDT" data-name="Solana" data-icon="◎">
+                                <span class="crypto-icon">◎</span>
+                                <div class="crypto-info">
+                                    <strong>SOL</strong>
+                                    <small>Solana</small>
+                                </div>
+                                <span class="crypto-price">$---</span>
+                            </div>
+                            <div class="crypto-item" data-symbol="ADAUSDT" data-name="Cardano" data-icon="₳">
+                                <span class="crypto-icon">₳</span>
+                                <div class="crypto-info">
+                                    <strong>ADA</strong>
+                                    <small>Cardano</small>
+                                </div>
+                                <span class="crypto-price">$---</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="trading-bottom">
+                <!-- Actions Trading -->
+                <div class="trading-actions">
+                    <h3>⚡ Actions</h3>
+
+
+                    <!-- Montant, Levier et Direction -->
+                    <div class="trade-inputs-row">
+                        <div class="form-group">
+                            <label for="trade-amount">💵 Montant ($)</label>
+                            <input type="number" id="trade-amount" placeholder="Insérez le montant du trade" min="1" max="500">
+                        </div>
+                        <div class="form-group">
+                            <label for="leverage-select">🎯 Levier</label>
+                            <select id="leverage-select">
+                                <option value="1">1x</option>
+                                <option value="2">2x</option>
+                                <option value="5">5x</option>
+                                <option value="10" selected>10x</option>
+                                <option value="20">20x</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="direction-select">📊 Direction</label>
+                            <select id="direction-select">
+                                <option value="LONG" selected>📈 LONG</option>
+                                <option value="SHORT">📉 SHORT</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- TP et SL pleine largeur -->
+                    <div class="tp-sl-section">
+                        <div class="form-group">
+                            <label for="take-profit">🎯 Take Profit ($)</label>
+                            <input type="number" id="take-profit" placeholder="Prix de sortie gagnant" min="0" step="0.00001">
+                            <small class="tp-percentage">Gain potentiel: +0%</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="stop-loss">🛑 Stop Loss ($)</label>
+                            <input type="number" id="stop-loss" placeholder="Prix de sortie perdant" min="0" step="0.00001">
+                            <small class="sl-percentage">Perte potentielle: -0%</small>
+                        </div>
+                    </div>
+
+                    <!-- Bouton de lancement -->
+                    <div class="launch-trade">
+                        <button class="btn btn-launch-trade" id="btn-launch-trade" onclick="executeTrade()">
+                            🚀 Lancer Trade
+                        </button>
+                    </div>
+                </div>
+                 <!-- Positions Ouvertes avec IDs multiples pour compatibilité -->
+                <div class="positions-section">
+                    <h3>📊 Positions ouvertes</h3>
+                    <!-- Container principal avec classe ET id -->
+                    <div class="scroll-container leverage-positions" id="positions-container">
+                        <div class="no-positions">
+                            <p>🚀 Aucune position ouverte</p>
+                            <small>Lancez votre première mission trading !</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+                        <!-- ===== SECTION POSITIONS ET HISTORIQUE CORRIGÉE ===== -->
+            <div class="trading-data">
+                
+
+            
+                <!-- Historique des Trades avec IDs multiples pour compatibilité -->
+                <div class="history-section">
+                    <h3>📋 Historique</h3>
+                    <!-- Container principal avec classe ET id -->
+                    <div class="scroll-container trade-history" id="history-container">
+                        <div class="no-trades">
+                            <p>📝 Aucun trade</p>
+                            <small>Votre journal de bord est vide</small>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+        </main>
+
+        <!-- Navigation Mobile -->
+        <nav class="mobile-nav">
+            <div class="mobile-nav-items">
+                <a href="../vu ensemble/dashboard.html" class="mobile-nav-item">
+                    <span class="icon">📊</span>
+                    <span class="label">Dashboard</span>
+                </a>
+                <a href="../formations/formations.html" class="mobile-nav-item">
+                    <span class="icon">🎓</span>
+                    <span class="label">Formation</span>
+                </a>
+                <a href="../live/live.html" class="mobile-nav-item">
+                    <span class="icon">📺</span>
+                    <span class="label">Live</span>
+                </a>
+                <a href="javascript:void(0)" class="mobile-nav-item active">
+                    <span class="icon">📈</span>
+                    <span class="label">Trading</span>
+                </a>
+                <a href="../tableau/tableau.html" class="mobile-nav-item">
+                    <span class="icon">📋</span>
+                    <span class="label">Tableau</span>
+                </a>
+                <a href="../portfolio/portfolio.html" class="mobile-nav-item">
+                    <span class="icon">💼</span>
+                    <span class="label">Portfolio</span>
+                </a>
+                <a href="../parametres/parametres.html" class="mobile-nav-item">
+                    <span class="icon">⚙️</span>
+                    <span class="label">Profil</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- ===== SCRIPTS DANS LE BON ORDRE ===== -->
+    
+    <!-- FIREBASE D'ABORD -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    
+    <!-- CONFIG FIREBASE AVANT LES AUTRES -->
+    <script src="../../firebase/config.js"></script>
+    
+    <!-- POINTS SUSTEM -->
+    <script src="../admin/points/js/points-system.js"></script>
+
+    <!-- AUTH FIREBASE POUR LES VARIABLES GLOBALES -->
+    <script src="../../firebase/auth.js"></script>
+    
+    <!-- SESSION PROTECTION -->
+    <script src="../../firebase/session-protection.js"></script>
+    
+    <!-- PUIS LES SCRIPTS TRADING -->
+    <script src="js/tab-protection.js"></script>
+    <script src="js/crypto-loader.js"></script>
+    <script src="js/trading-system.js"></script>
+
+    <script src="points-verification.js"></script>
+
+</body>
+</html>

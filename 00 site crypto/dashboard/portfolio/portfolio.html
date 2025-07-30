@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Crypto-Nitro</title>
+
+    <link rel="icon" type="image/png" href="../../logo/fusee-crypto-nitro.png">
+    
+    <!-- CSS partagé -->
+    <link rel="stylesheet" href="../vu%20ensemble/css/dashboard-main.css">
+    <link rel="stylesheet" href="../vu%20ensemble/css/dashboard-nav.css">
+    
+    <!-- CSS spécifique portfolio -->
+    <link rel="stylesheet" href="css/portfolio.css">
+</head>
+<body class="dashboard-body">
+    
+    <!-- Header Dashboard -->
+    <header class="dashboard-header">
+        <div class="header-content">
+            <div class="logo-dashboard">
+                <a href="../../index.html">🚀 CryptoTraders Pro</a>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <div class="user-avatar" id="user-avatar">👨‍🚀</div>
+                    <span class="user-name" id="user-name">Astronaute</span>
+                    <div class="user-dropdown">
+                        <a href="../vu%20ensemble/dashboard.html">🏠 Dashboard</a>
+                        <a href="../../index.html" id="logout-btn">🚪 Déconnexion</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Container Principal -->
+    <div class="dashboard-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-user">
+                <div class="sidebar-avatar" id="sidebar-avatar">👨‍🚀</div>
+                <h3 id="sidebar-user-name">Astronaute</h3>
+                <p class="user-rank">🚀 Cadet Spatial</p>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="../vu%20ensemble/dashboard.html" class="nav-item">
+                    📊 Vue d'ensemble
+                </a>
+                <a href="../formations/formations.html" class="nav-item">
+                    🎓 Formations
+                </a>
+                <a href="../live/live.html" class="nav-item">
+                    📺 Live
+                </a>
+                <a href="../trading/trading.html" class="nav-item">
+                    📈 Trading
+                </a>
+                <a href="../tableau/tableau.html" class="nav-item">
+                    📋 Tableau
+                </a>
+                <a href="#" class="nav-item active" onclick="return false;">
+                    💼 Portfolio
+                </a>
+                <a href="../parametres/parametres.html" class="nav-item">
+                    ⚙️ Paramètres
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="../../index.html" class="btn btn-secondary btn-full">
+                    🌍 Retour au site
+                </a>
+            </div>
+        </aside>
+        
+        <!-- Contenu Principal -->
+        <main class="dashboard-main">
+            
+            <!-- Section Portfolio -->
+            <section class="dashboard-section active" id="section-portfolio">
+                <div class="section-header">
+                    <div class="header-left">
+                        <h2>💼 Portfolio Spatial</h2>
+                        <p>Suivez l'évolution de vos investissements crypto</p>
+                    </div>
+                    <div class="header-right">
+                        <div class="portfolio-controls">
+                            <button class="btn btn-primary" id="add-transaction-btn">
+                                ➕ Ajouter une transaction
+                            </button>
+                            <button class="btn btn-secondary" id="export-portfolio-btn">
+                                📤 Exporter
+                            </button>
+                            <div class="view-toggle">
+                                <button class="toggle-btn active" data-view="overview">Vue d'ensemble</button>
+                                <button class="toggle-btn" data-view="transactions">Transactions</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Métriques principales -->
+                <div class="portfolio-metrics">
+                    <div class="metric-card main-metric">
+                        <div class="metric-value">
+                            <span class="value" id="portfolio-total">$0.00</span>
+                            <span class="eye-icon" id="visibility-toggle">👁️</span>
+                        </div>
+                        <div class="metric-change">
+                            <span class="change-amount positive" id="portfolio-change">+$0.00</span>
+                            <span class="change-percent positive" id="portfolio-percent">0% (total)</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-label">Profit total</div>
+                        <div class="metric-value positive" id="total-profit">+$0.00</div>
+                        <div class="metric-change">0%</div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-label">Coût Basis</div>
+                        <div class="metric-value" id="cost-basis">$0.00</div>
+                        <div class="metric-change">Initial investment</div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-label">Meilleure Performance</div>
+                        <div class="metric-value positive" id="best-performer">📈 -</div>
+                        <div class="metric-change">Aucune transaction</div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-label">Pire Performance</div>
+                        <div class="metric-value negative" id="worst-performer">📉 -</div>
+                        <div class="metric-change">Aucune transaction</div>
+                    </div>
+                </div>
+
+                <!-- Contenu principal -->
+                <div class="portfolio-content">
+                    
+                    <!-- Vue d'ensemble -->
+                    <div class="portfolio-view active" id="overview-view">
+                        <div class="portfolio-grid">
+                            
+                            <!-- Message vide -->
+                            <div class="empty-portfolio" id="empty-portfolio">
+                                <div class="empty-icon">💼</div>
+                                <h3>Votre portfolio est vide</h3>
+                                <p>Ajoutez votre première transaction pour commencer à suivre vos investissements</p>
+                                <button class="btn btn-primary" id="add-first-transaction">
+                                    ➕ Ajouter une transaction
+                                </button>
+                            </div>
+                            
+                        <!-- Graphiques côte à côte -->
+                        <div class="chart-section">
+                            <!-- 1. Historique -->
+                            <div class="chart-container">
+                                <h3>📈 Historique</h3>
+                                <div class="chart-tabs">
+                                    <button class="chart-tab active" data-period="24h">24h</button>
+                                    <button class="chart-tab" data-period="7d">7j</button>
+                                    <button class="chart-tab" data-period="30d">30j</button>
+                                    <button class="chart-tab" data-period="90d">90j</button>
+                                    <button class="chart-tab" data-period="1y">Tout</button>
+                                </div>
+                                <div class="chart-wrapper">
+                                    <canvas id="portfolio-chart"></canvas>
+                                </div>
+                            </div>
+                            
+                            <!-- 2. Performance -->
+                            <div class="performance-container">
+                                <h3>📊 Performance (cumulative)</h3>
+                                <div class="performance-legend">
+                                    <div class="legend-item">
+                                        <span class="legend-color" style="background: #00ff88;"></span>
+                                        All-time profit
+                                    </div>
+                                    <div class="legend-item">
+                                        <span class="legend-color" style="background: #ff9500;"></span>
+                                        BTC trend
+                                    </div>
+                                </div>
+                                <div class="chart-wrapper">
+                                    <canvas id="performance-chart"></canvas>
+                                </div>
+                            </div>
+                        
+                            <!-- 3. Répartition (DÉPLACÉE ICI) -->
+                            <div class="allocation-section">
+                                <h3>🥧 Répartition</h3>
+                                <div class="pie-chart-container">
+                                    <canvas id="allocation-chart"></canvas>
+                                </div>
+                                <div class="allocation-list" id="allocation-list">
+                                    <!-- Sera rempli par JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vue transactions -->
+                    <div class="portfolio-view" id="transactions-view">
+                        <div class="transactions-header">
+                            <h3>📋 Historique des transactions</h3>
+                            <div class="transaction-filters">
+                                <select id="filter-type">
+                                    <option value="all">Tous les types</option>
+                                    <option value="buy">Achat</option>
+                                    <option value="sell">Vente</option>
+                                </select>
+                                <select id="filter-coin">
+                                    <option value="all">Toutes les cryptos</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="transactions-table">
+                            <div class="table-header">
+                                <div class="th">Date</div>
+                                <div class="th">Type</div>
+                                <div class="th">Crypto</div>
+                                <div class="th">Quantité</div>
+                                <div class="th">Prix</div>
+                                <div class="th">Total</div>
+                                <div class="th">Actions</div>
+                            </div>
+                            <div class="table-body" id="transactions-body">
+                                <!-- Transactions seront ajoutées par JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Actifs du portfolio -->
+                <div class="assets-section">
+                    <h3>🏦 Actifs</h3>
+                    <div class="assets-table">
+                        <div class="table-header">
+                            <div class="th">Nom</div>
+                            <div class="th">Prix</div>
+                            <div class="th">1h%</div>
+                            <div class="th">24h%</div>
+                            <div class="th">7d%</div>
+                            <div class="th">Avoirs</div>
+                            <div class="th">Prix d'achat moyen</div>
+                            <div class="th">Profit/Pertes</div>
+                            <div class="th">Actions</div>
+                        </div>
+                        <div class="table-body" id="assets-body">
+                            <!-- Actifs seront ajoutés par JS -->
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+        </main>
+        
+        <!-- Navigation Mobile -->
+        <nav class="mobile-nav">
+            <div class="mobile-nav-items">
+                <a href="../vu%20ensemble/dashboard.html" class="mobile-nav-item">
+                    <span class="icon">📊</span>
+                    <span class="label">Dashboard</span>
+                </a>
+                <a href="../formations/formations.html" class="mobile-nav-item">
+                    <span class="icon">🎓</span>
+                    <span class="label">Formation</span>
+                </a>
+                <a href="../live/live.html" class="mobile-nav-item">
+                    <span class="icon">📺</span>
+                    <span class="label">Live</span>
+                </a>
+                <a href="../trading/trading.html" class="mobile-nav-item">
+                    <span class="icon">📈</span>
+                    <span class="label">Trading</span>
+                </a>
+                <a href="../tableau/tableau.html" class="mobile-nav-item">
+                    <span class="icon">📋</span>
+                    <span class="label">Tableau</span>
+                </a>
+                <a href="portfolio.html" class="mobile-nav-item active">
+                    <span class="icon">💼</span>
+                    <span class="label">Portfolio</span>
+                </a>
+                <a href="../parametres/parametres.html" class="mobile-nav-item">
+                    <span class="icon">⚙️</span>
+                    <span class="label">Profil</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Modal Ajouter Transaction -->
+    <div class="modal" id="transaction-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>➕ Ajouter une transaction</h3>
+                <button class="close-btn" id="close-modal-btn">✕</button>
+            </div>
+            <div class="modal-body">
+                <form id="transaction-form">  
+                    <div class="form-group">
+                        <label>Cryptomonnaie</label>
+                        <div class="crypto-selector-container">
+                            <input type="text" id="crypto-search-modal" placeholder="🔍 Rechercher une crypto..." class="crypto-search-input-modal">
+                            <div class="crypto-dropdown" id="crypto-dropdown">
+                                <!-- Sera rempli par JS -->
+                            </div>
+                            <input type="hidden" id="transaction-crypto" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Type de transaction</label>
+                        <select id="transaction-type" required>
+                            <option value="buy">Achat</option>
+                            <option value="sell">Vente</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Quantité</label>
+                            <input type="number" id="transaction-quantity" step="0.00000001" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Prix unitaire ($)</label>
+                            <input type="number" id="transaction-price" step="0.01" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="datetime-local" id="transaction-date" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Frais (optionnel)</label>
+                        <input type="number" id="transaction-fees" step="0.01" placeholder="0.00">
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="cancel-transaction">
+                            Annuler
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            Ajouter la transaction
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    
+    <!-- Config Firebase -->
+    <script src="../../firebase/config.js"></script>
+
+    <!-- Système temps réel global -->
+    <script src="../../firebase/realtime-sync.js"></script>
+
+    <!-- POINTS SUSTEM -->
+    <script src="../admin/points/js/points-system.js"></script>
+    
+    <!-- Auth Firebase -->
+    <script src="../../firebase/auth.js"></script> 
+
+    <!-- Chart.js pour les graphiques -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="../trading/js/crypto-loader.js"></script>
+    
+    <!-- Script Portfolio -->
+    <script src="js/portfolio.js"></script>
+
+
+</body>
+</html>

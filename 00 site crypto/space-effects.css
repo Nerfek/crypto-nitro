@@ -1,0 +1,386 @@
+/* ===== SPACE-EFFECTS.CSS - EFFETS SPATIAUX ET ANIMATIONS ===== */
+
+/* ===== FOND SPATIAL ===== */
+.space-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px), radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px), radial-gradient(circle, rgba(255,255,255,0.1) 2px, transparent 2px);
+    background-size: 50px 50px, 100px 100px, 150px 150px;
+    background-position: 0 0, 25px 25px, 75px 75px;
+    animation: starfield 100s linear infinite;
+}
+
+@keyframes starfield {
+    from { transform: translateY(0); }
+    to { transform: translateY(-100px); }
+}
+
+/* ===== LA TERRE ===== */
+.earth {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #4A90E2 0%, #2E5984 40%, #1E3A5F 70%, #0F1419 100%);
+    box-shadow: inset -30px -30px 60px rgba(0,0,0,0.4), 0 0 80px rgba(74, 144, 226, 0.3);
+    z-index: 1;
+    transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.earth::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 20%, rgba(34, 139, 34, 0.8) 0%, transparent 30%), radial-gradient(circle at 70% 50%, rgba(34, 139, 34, 0.6) 0%, transparent 25%), radial-gradient(circle at 20% 70%, rgba(34, 139, 34, 0.7) 0%, transparent 20%), radial-gradient(circle at 60% 80%, rgba(139, 69, 19, 0.5) 0%, transparent 15%);
+    animation: earthRotation 30s linear infinite;
+}
+
+@keyframes earthRotation {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ===== LA LUNE ===== */
+.moon {
+    position: fixed;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 30%, #E6E6E6 0%, #CCCCCC 30%, #999999 60%, #666666 100%);
+    box-shadow: inset -20px -20px 40px rgba(0,0,0,0.3), 0 0 40px rgba(230, 230, 230, 0.2);
+    z-index: 1;
+    transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.moon::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 40%, rgba(0,0,0,0.3) 3%, transparent 8%), radial-gradient(circle at 70% 20%, rgba(0,0,0,0.2) 2%, transparent 6%), radial-gradient(circle at 20% 80%, rgba(0,0,0,0.25) 4%, transparent 10%), radial-gradient(circle at 80% 70%, rgba(0,0,0,0.2) 2%, transparent 7%);
+}
+
+/* ===== LA FUSÉE ===== */
+.rocket {
+    position: fixed;
+    width: 60px;
+    height: 120px;
+    z-index: 5;
+    transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: center center;
+}
+
+.rocket::before {
+    content: '🚀';
+    font-size: 60px;
+    display: block;
+    filter: drop-shadow(0 0 20px rgba(255, 100, 0, 0.8));
+    animation: rocketFloat 2s ease-in-out infinite alternate;
+    transition: transform 0.5s ease;
+}
+
+@keyframes rocketFloat {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+}
+
+/* ===== TRAÎNÉE DE LA FUSÉE ===== */
+.rocket-trail {
+    position: fixed;
+    width: 4px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(255, 100, 0, 0.8) 0%, rgba(255, 200, 0, 0.6) 50%, transparent 100%);
+    z-index: 4;
+    transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: top center;
+    animation: trailFlicker 0.1s infinite;
+}
+
+@keyframes trailFlicker {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+/* ===== ÉTOILES ===== */
+.stars-field {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: starTwinkle 3s ease-in-out infinite;
+    transition: all 0.3s ease;
+}
+
+@keyframes starTwinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.5); }
+}
+
+.star.interactive {
+    transition: all 0.3s ease;
+}
+
+.star.near-cursor {
+    transform: scale(2) !important;
+    opacity: 1 !important;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    background: #00ff88;
+    animation: none;
+}
+
+/* ===== CURSEUR SPATIAL ULTRA FLUIDE ===== */
+.cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #00ff88;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.7);
+    animation: cursorPulse 2s infinite;
+}
+
+.cursor-trail {
+    width: 8px;
+    height: 8px;
+    background: rgba(0, 255, 136, 0.5);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+@keyframes cursorPulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.2); }
+}
+
+/* ===== POSITIONS SELON LE NIVEAU DE VOYAGE ===== */
+
+/* NIVEAU 0 - SUR TERRE */
+.journey-level-0 .earth {
+    bottom: -150px;
+    left: 50%;
+    transform: translateX(-50%) scale(2);
+}
+
+.journey-level-0 .moon {
+    top: 10%;
+    right: 10%;
+    transform: scale(0.3);
+    opacity: 0.5;
+}
+
+.journey-level-0 .rocket {
+    bottom: 150px;
+    left: 50%;
+    transform: translateX(-50%) scale(1.5) rotate(0deg);
+}
+
+.journey-level-0 .rocket-trail {
+    bottom: 144px;
+    left: 50%;
+    transform: translateX(-50%) scale(1.5) rotate(0deg);
+    height: 0px;
+}
+
+/* NIVEAU 1 - DÉCOLLAGE */
+.journey-level-1 .earth {
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%) scale(1.5);
+}
+
+.journey-level-1 .moon {
+    top: 15%;
+    right: 15%;
+    transform: scale(0.4);
+    opacity: 0.7;
+}
+
+.journey-level-1 .rocket {
+    bottom: 40%;
+    left: 52%;
+    transform: translateX(-50%) scale(1.2) rotate(15deg);
+}
+
+.journey-level-1 .rocket-trail {
+    bottom: 33%;
+    left: 50%;
+    transform: translateX(-50%) scale(1.2) rotate(15deg);
+    height: 60px;
+}
+
+/* NIVEAU 2 - ESPACE PROCHE */
+.journey-level-2 .earth {
+    bottom: -50px;
+    left: 20%;
+    transform: scale(1);
+}
+
+.journey-level-2 .moon {
+    top: 25%;
+    right: 25%;
+    transform: scale(0.6);
+    opacity: 0.8;
+}
+
+.journey-level-2 .rocket {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1) rotate(45deg);
+}
+
+.journey-level-2 .rocket-trail {
+    top: 55%;
+    left: 45%;
+    transform: translate(-50%, -50%) scale(1) rotate(45deg);
+    height: 80px;
+}
+
+/* NIVEAU 3 - ESPACE PROFOND */
+.journey-level-3 .earth {
+    bottom: 30%;
+    left: 10%;
+    transform: scale(0.6);
+    opacity: 0.8;
+}
+
+.journey-level-3 .moon {
+    top: 20%;
+    right: 20%;
+    transform: scale(0.8);
+    opacity: 0.9;
+}
+
+.journey-level-3 .rocket {
+    top: 40%;
+    right: 45%;
+    transform: scale(0.8) rotate(75deg);
+}
+
+.journey-level-3 .rocket-trail {
+    top: 45%;
+    right: 40%;
+    transform: scale(0.8) rotate(75deg);
+    height: 100px;
+}
+
+/* NIVEAU 4 - SUR LA LUNE */
+.journey-level-4 .earth {
+    top: 10%;
+    left: 10%;
+    transform: scale(0.4);
+    opacity: 0.7;
+}
+
+.journey-level-4 .moon {
+    bottom: -60px;
+    right: 50%;
+    transform: translateX(50%) scale(2);
+}
+
+.journey-level-4 .rocket {
+    bottom: 60px;
+    right: 50%;
+    transform: translateX(50%) scale(1.5) rotate(0deg);
+}
+
+.journey-level-4 .rocket-trail {
+    bottom: 54px;
+    right: 50%;
+    transform: translateX(50%) scale(1.5) rotate(0deg);
+    height: 0px;
+}
+
+/* ===== ANIMATIONS SPÉCIALES ===== */
+.rocket.returning::before {
+    transform: scaleX(-1) rotate(180deg);
+    transition: transform 1s ease-in-out;
+}
+
+.rocket.returning {
+    transition: transform 2s ease-in-out;
+}
+
+.journey-level-0.returning .rocket {
+    transform: translateX(-50%) scale(1.5) rotate(0deg) !important;
+}
+
+.journey-level-1.returning .rocket {
+    transform: translateX(-50%) scale(1.2) rotate(15deg) !important;
+}
+
+.journey-level-2.returning .rocket {
+    transform: translate(-50%, -50%) scale(1) rotate(45deg) !important;
+}
+
+.journey-level-3.returning .rocket {
+    transform: scale(0.8) rotate(75deg) !important;
+}
+
+.journey-level-4.returning .rocket {
+    transform: translateX(50%) scale(1.5) rotate(0deg) !important;
+}
+
+.rocket.moving .rocket-trail {
+    animation: intenseFire 0.1s infinite;
+}
+
+@keyframes intenseFire {
+    0% { background: linear-gradient(to bottom, rgba(255, 100, 0, 1) 0%, rgba(255, 200, 0, 0.8) 50%, transparent 100%); }
+    50% { background: linear-gradient(to bottom, rgba(255, 150, 0, 1) 0%, rgba(255, 255, 0, 0.9) 50%, transparent 100%); }
+    100% { background: linear-gradient(to bottom, rgba(255, 100, 0, 1) 0%, rgba(255, 200, 0, 0.8) 50%, transparent 100%); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .journey-level-0 .earth {
+        bottom: -200px;
+        transform: translateX(-50%) scale(1.5);
+    }
+
+    .journey-level-0 .rocket {
+        bottom: 25%;
+        transform: translateX(-50%) scale(1.2) rotate(0deg);
+    }
+
+    .journey-level-1 .earth {
+        bottom: -150px;
+        transform: translateX(-50%) scale(1.2);
+    }
+
+    .journey-level-1 .rocket {
+        bottom: 45%;
+        transform: translateX(-50%) scale(1) rotate(15deg);
+    }
+
+    .journey-level-4 .moon {
+        bottom: -100px;
+        transform: translateX(50%) scale(1.5);
+    }
+
+    .journey-level-4 .rocket {
+        bottom: 20%;
+        transform: scale(1.2) rotate(0deg);
+    }
+}

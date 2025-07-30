@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Crypto-Nitro</title>
+    
+    <link rel="icon" type="image/png" href="../../logo/fusee-crypto-nitro.png">
+    
+    <!-- CSS Dashboard -->
+    <link rel="stylesheet" href="css/dashboard-main.css">
+    <link rel="stylesheet" href="css/dashboard-nav.css">
+    <link rel="stylesheet" href="css/dashboard-new.css">
+    
+    <!-- Firebase CSS si besoin -->
+    <link rel="stylesheet" href="../../user-auth.css">
+</head>
+<body class="dashboard-body">
+    
+    <!-- Header Dashboard -->
+    <header class="dashboard-header">
+        <div class="header-content">
+            <div class="logo-dashboard">
+            	<a href="dashboard.html">
+            		<img src="../../logo/logo-crypto-nitro-v2.png" alt="Crypto-Nitro Logo" class="logo-img">
+            	</a>
+            </div>
+
+            
+            <div class="header-right">
+                <div class="user-info">
+                    <div class="user-avatar" id="user-avatar">👨‍🚀</div>
+                    <span class="user-name" id="user-name">Astronaute</span>
+                    <div class="user-dropdown">
+                        <a href="../../index.html" id="logout-btn">🚪 Déconnexion</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Container Principal Dashboard -->
+    <div class="dashboard-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-user">
+                <div class="sidebar-avatar">👨‍🚀</div>
+                <h3 id="sidebar-user-name">Astronaute</h3>
+                <p class="user-rank">🌟 Cadet Spatial</p>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-section="overview">
+                    📊 Vue d'ensemble
+                </a>
+                <a href="#" class="nav-item" data-section="formations">
+                    🎓 Formations
+                </a>
+                <a href="#" class="nav-item" data-section="live">
+                    📺 Live
+                </a>
+                <a href="#" class="nav-item" data-section="trading">
+                    📈 Trading
+                </a>
+                <a href="#" class="nav-item" data-section="tableau">
+                    📋 Tableau
+                </a>
+                <a href="#" class="nav-item" data-section="portfolio">
+                    💼 Portfolio
+                </a>
+                <a href="#" class="nav-item" data-section="settings">
+                    ⚙️ Paramètres
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <!-- Bouton normal (visible par défaut) -->
+                <a href="../../index.html?from=dashboard" class="btn btn-secondary btn-full" id="normal-return-btn">
+                    🌍 Retour au site
+                </a>
+                
+                <!-- Bouton admin (caché par défaut) -->
+                <a href="../admin/admin.html" class="btn btn-admin btn-full" id="admin-return-btn" style="display: none;">
+                    👑 Dashboard Admin
+                </a>
+            </div>
+        </aside>
+
+        <!-- Contenu Principal -->
+        <main class="dashboard-main">
+            
+            <!-- Section Vue d'ensemble -->
+            <section class="dashboard-section active" id="section-overview">
+                
+                <!-- Hero Section avec salutation -->
+                <div class="dashboard-hero">
+                    <div class="hero-content">
+                        <h1 class="hero-greeting">🚀 Salut <span id="hero-username">Astronaute</span> !</h1>
+                        <p class="hero-subtitle">Prêt pour une nouvelle mission trading ?</p>
+                        <div class="hero-quick-stats">
+                            <div class="quick-stat">
+                                <span class="quick-stat-value" id="hero-portfolio">$500.00</span>
+                                <span class="quick-stat-label">Portfolio Total</span>
+                            </div>
+                            <div class="quick-stat">
+                                <span class="quick-stat-value positive" id="hero-pnl">+$0.00</span>
+                                <span class="quick-stat-label">P&L Total</span>
+                            </div>
+                            <div class="quick-stat">
+                                <span class="quick-stat-value" id="hero-rank">🚀 Cadet</span>
+                                <span class="quick-stat-label">Rang Actuel</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sections principales -->
+                <div class="dashboard-sections">
+                    
+                    <!-- Section Portfolio -->
+                    <div class="dashboard-section-card portfolio-section" onclick="navigateToSection('portfolio')">
+                        <div class="section-header">
+                            <div class="section-icon">💼</div>
+                            <div class="section-title">
+                                <h3>Portfolio</h3>
+                                <p>Gestion de vos investissements</p>
+                            </div>
+                            <div class="section-arrow">→</div>
+                        </div>
+                        
+                        <div class="section-content">
+                            <div class="portfolio-overview">
+                                <div class="portfolio-main-metric">
+                                    <span class="metric-label">Valeur Totale</span>
+                                    <span class="metric-value" id="portfolio-total">$500.00</span>
+                                    <span class="metric-change positive" id="portfolio-change">+0% (0$)</span>
+                                </div>
+                                
+                                <div class="portfolio-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-label">Investi</span>
+                                        <span class="stat-value" id="portfolio-invested">$0.00</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label">Profit/Perte</span>
+                                        <span class="stat-value" id="portfolio-profit">+$0.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section Journal de Trading -->
+                    <div class="dashboard-section-card trading-section" onclick="navigateToSection('tableau')">
+                        <div class="section-header">
+                            <div class="section-icon">📊</div>
+                            <div class="section-title">
+                                <h3>Journal de Trading</h3>
+                                <p>Suivez vos performances de trading</p>
+                            </div>
+                            <div class="section-arrow">→</div>
+                        </div>
+
+                        <div class="section-content">
+                            <div class="trading-overview">
+                                <div class="trading-positions">
+                                    <h4>🔥 Positions Ouvertes</h4>
+                                    <div class="positions-list" id="open-positions-list">
+                                        <div class="no-positions">
+                                            <span class="empty-icon">📈</span>
+                                            <span>Aucune position ouverte</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="trading-stats">
+                                    <div class="trading-stat-row">
+                                        <div class="stat-column">
+                                            <span class="period-label">Ce Mois</span>
+                                            <div class="stat-values">
+                                                <span class="stat-pnl" id="month-pnl">+$0.00</span>
+                                                <span class="stat-trades" id="month-trades">0 trades</span>
+                                            </div>
+                                        </div>
+                                        <div class="stat-divider">|</div>
+                                        <div class="stat-column">
+                                            <span class="period-label">Cette Année</span>
+                                            <div class="stat-values">
+                                                <span class="stat-pnl" id="year-pnl">+$0.00</span>
+                                                <span class="stat-trades" id="year-trades">0 trades</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section Formations -->
+                    <div class="dashboard-section-card formations-section" onclick="navigateToSection('formations')">
+                        <div class="section-header">
+                            <div class="section-icon">🎓</div>
+                            <div class="section-title">
+                                <h3>Formations</h3>
+                                <p>Développez vos compétences</p>
+                            </div>
+                            <div class="section-arrow">→</div>
+                        </div>
+                        
+                        <div class="section-content">
+                            <div class="formations-overview">
+                                <div class="formation-progress">
+                                    <div class="progress-header">
+                                        <span class="progress-text">Progression Globale</span>
+                                        <span class="progress-percentage" id="formation-percentage">47%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" id="formation-progress" style="width: 47%"></div>
+                                    </div>
+                                    <div class="progress-details">
+                                        <span id="completed-courses">7</span> / <span id="total-courses">15</span> cours complétés
+                                    </div>
+                                </div>
+                                
+                                <div class="current-course">
+                                    <h4>📚 En Cours</h4>
+                                    <div class="course-info">
+                                        <span class="course-name">Analyse Technique</span>
+                                        <span class="course-progress">Module 4/6 (65%)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section Live -->
+                    <div class="dashboard-section-card live-section" onclick="navigateToSection('live')">
+                        <div class="section-header">
+                            <div class="section-icon">📺</div>
+                            <div class="section-title">
+                                <h3>Lives & Formations</h3>
+                                <p>Rejoignez les sessions live</p>
+                            </div>
+                            <div class="section-arrow">→</div>
+                        </div>
+                        
+                        <div class="section-content">
+                            <div class="live-overview">
+                                <div class="live-status">
+                                    <div class="status-indicator offline"></div>
+                                    <span class="status-text">Aucun live en cours</span>
+                                </div>
+                                
+                                <div class="next-live">
+                                    <h4>🔔 Prochain Live</h4>
+                                    <div class="live-info">
+                                        <div class="live-title">Introduction au Trading</div>
+                                        <div class="live-time">Aujourd'hui à 14:00</div>
+                                        <div class="live-duration">⏱️ 1h30</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="live-week">
+                                    <span class="week-info">3 lives prévus cette semaine</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activité récente -->
+                <div class="recent-activity-section">
+                    <h3>📈 Activité Récente</h3>
+                    <div class="activity-timeline">
+                        <div class="activity-item">
+                            <div class="activity-icon success">📈</div>
+                            <div class="activity-content">
+                                <div class="activity-title">Trade BTC/USDT fermé</div>
+                                <div class="activity-details">Position Long • +2.5% • +$45.00</div>
+                                <div class="activity-time">Il y a 2 heures</div>
+                            </div>
+                        </div>
+                        
+                        <div class="activity-item">
+                            <div class="activity-icon info">🎓</div>
+                            <div class="activity-content">
+                                <div class="activity-title">Formation complétée</div>
+                                <div class="activity-details">Analyse Technique - Module 3</div>
+                                <div class="activity-time">Hier</div>
+                            </div>
+                        </div>
+                        
+                        <div class="activity-item">
+                            <div class="activity-icon neutral">💰</div>
+                            <div class="activity-content">
+                                <div class="activity-title">Portfolio mis à jour</div>
+                                <div class="activity-details">Nouvelle transaction ETH</div>
+                                <div class="activity-time">Il y a 3 jours</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+        </main>
+        
+        <!-- Navigation mobile en bas -->
+        <nav class="mobile-nav">
+            <div class="mobile-nav-items">
+                <a href="javascript:void(0)" class="mobile-nav-item active" data-section="overview">
+                    <span class="icon">📊</span>
+                    <span class="label">Dashboard</span>
+                </a>
+                <a href="javascript:void(0)" class="mobile-nav-item" data-section="formations">
+                    <span class="icon">🎓</span>
+                    <span class="label">Formation</span>
+                </a>
+                <a href="javascript:void(0)" class="mobile-nav-item" data-section="live">
+                    <span class="icon">📺</span>
+                    <span class="label">Live</span>
+                </a>
+                <a href="javascript:void(0)" class="mobile-nav-item" data-section="trading">
+                    <span class="icon">📈</span>
+                    <span class="label">Trading</span>
+                </a>
+                <a href="javascript:void(0)" class="mobile-nav-item" data-section="tableau">
+                    <span class="icon">📋</span>
+                    <span class="label">Tableau</span>
+                </a>
+                <a href="javascript:void(0)" class="mobile-nav-item" data-section="portfolio">
+                    <span class="icon">💼</span>
+                    <span class="label">Portfolio</span>
+                </a>
+                <a href="javascript:void(0)" class="mobile-nav-item" data-section="settings">
+                    <span class="icon">⚙️</span>
+                    <span class="label">Profil</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Scripts Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    
+    <!-- Config Firebase -->
+    <script src="../../firebase/config.js"></script>
+    
+    <!-- Scripts Dashboard -->
+    <script src="js/dashboard-main.js"></script>
+    
+    
+    <!-- Protection multi-onglets -->
+    <script src="../trading/js/tab-protection.js"></script>
+    
+
+    <!-- Session protection -->
+    <script src="../../firebase/session-protection.js"></script>
+
+    <!-- Système temps réel global -->
+    <script src="../../firebase/realtime-sync.js"></script>
+
+    <!-- Crypto loader -->
+    <script src="../trading/js/crypto-loader.js"></script>
+
+    <!-- POINTS SUSTEM -->
+    <script src="../admin/points/js/points-system.js"></script>
+    
+    <!-- Auth Firebase -->
+    <script src="../../firebase/auth.js"></script>
+
+
+</body>
+</html>

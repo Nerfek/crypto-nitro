@@ -1,0 +1,1282 @@
+/* ===== DASHBOARD/CSS/TRADING.CSS ===== */
+/* ===== SECTION TRADING DASHBOARD ===== */
+#section-trading {
+    padding: 0;
+    margin: 0;
+}
+
+#section-trading .section-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.trading-interface {
+    display: grid;
+    grid-template-columns: 4fr 0.7fr;
+    grid-template-rows: auto auto auto;  /* ← Remets "auto auto auto" */
+    gap: 1.5rem;
+    margin-top: 1rem;
+    min-height: calc(100vh - 200px);
+}
+
+.trading-data {
+    grid-column: 1 / -1;
+    grid-row: 3 / 4;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* Header crypto avec prix en temps réel */
+.crypto-header {
+    grid-column: 1 / -1;
+    background: rgba(0, 0, 17, 0.9);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 15px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.crypto-main-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.crypto-main-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.crypto-price-info h2 {
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin: 0 0 0.3rem;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left; /* ← Forcer alignement gauche */
+}
+
+.crypto-current-price {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #00ff88;
+    margin: 0 1rem 0 0;
+    line-height: 1;
+}
+
+.crypto-price-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    margin-left: 0; /* ← Pas de marge */
+    padding-left: 0; /* ← Pas de padding */
+}
+
+.crypto-price-row {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    text-align: left;
+}
+
+.crypto-change-24h {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+}
+
+.crypto-change-24h.positive {
+    color: #00ff88;
+    background: rgba(0, 255, 136, 0.1);
+}
+
+.crypto-change-24h.negative {
+    color: #ff4757;
+    background: rgba(255, 71, 87, 0.1);
+}
+
+.crypto-stats {
+    display: flex;
+    gap: 2rem;
+}
+
+.stat-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-label {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.8rem;
+    margin-bottom: 0.2rem;
+}
+
+.stat-value {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+
+
+/* ===== GRAPHIQUE TRADINGVIEW ===== */
+.trading-chart-container {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    background: rgba(0, 255, 136, 0.05);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 15px;
+    padding: 1rem 0.5rem 0.5rem 0.5rem;
+    height: 740px;
+    overflow: hidden;
+}
+
+#trading-chart {
+    width: 100%;
+    height: calc(100% - 1rem);
+    overflow: hidden !important;
+    border-radius: 10px;
+}
+
+
+/* ===== CONTRÔLES TRADING ===== */
+.trading-controls {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    max-width: 300px;
+    width: 300px;
+    flex-shrink: 0;
+    align-items: stretch;
+}
+
+.crypto-selector {
+    flex: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.crypto-selector .crypto-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.trading-portfolio,
+.crypto-selector {
+    background: rgba(0, 255, 136, 0.05);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 15px;
+    padding: 1.5rem;
+}
+
+.trading-portfolio h3,
+.crypto-selector h3 {
+    color: #00ff88;
+    margin: 0 0 1rem;
+    font-size: 1.1rem;
+}
+
+/* ===== STATS PORTFOLIO ===== */
+.portfolio-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-item label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.trading-balance,
+.trading-total-value,
+.trading-margin {
+    color: #00ff88;
+    font-weight: 600;
+}
+
+.trading-pnl.positive {
+    color: #00ff88;
+}
+
+.trading-pnl.negative {
+    color: #ff4757;
+}
+
+/* ===== LISTE CRYPTOS ===== */
+.crypto-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+    overflow: hidden;
+}
+
+
+.crypto-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 0;
+    width: 100%;
+}
+
+.crypto-item:hover,
+.crypto-item.selected {
+    border-color: #00ff88;
+    background: rgba(0, 255, 136, 0.1);
+    transform: scale(1.02);
+}
+
+.crypto-icon {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.crypto-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.crypto-info strong {
+    color: #ffffff;
+    display: block;
+}
+
+.crypto-info small {
+    color: rgba(255, 255, 255, 0.5);
+    display: block;
+}
+
+
+.crypto-price {
+    color: #00ff88;
+    font-weight: 600;
+}
+
+
+
+
+/* ===== ACTIONS TRADING ===== */
+.trading-actions {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    background: rgba(0, 255, 136, 0.05);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 15px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 50%;
+    flex: 1;
+}
+
+#direction-select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 8px;
+    background: #1a1a2e;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 16 16'%3e%3cpath d='m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+}
+
+#direction-select:focus {
+    outline: none;
+}
+
+#direction-select:focus.long-selected {
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+#direction-select:focus.short-selected {
+    box-shadow: 0 0 10px rgba(255, 71, 87, 0.3);
+}
+
+/* Style pour LONG sélectionné */
+#direction-select.long-selected {
+    background-color: rgba(0, 255, 136, 0.5);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 16 16'%3e%3cpath d='m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+    color: #ffffff;
+    border-color: #00ff88;
+}
+
+/* Style pour SHORT sélectionné */
+#direction-select.short-selected {
+    background-color: rgba(255, 71, 87, 0.5);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 16 16'%3e%3cpath d='m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+    color: #ffffff;
+    border-color: #ff4757;
+}
+
+#direction-select option {
+    background: #1a1a2e;
+    color: #ffffff;
+}
+
+
+
+#direction-select:focus {
+    outline: none;
+    border-color: #00ff88;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+.trading-actions h3 {
+    color: #00ff88;
+    margin: 0 0 1rem;
+    font-size: 1.1rem;
+}
+
+/* Inputs principaux */
+.trade-inputs-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.form-group label {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+}
+
+.form-group input {
+    padding: 0.8rem;
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 8px;
+    background: rgba(0, 255, 136, 0.05);
+    color: #ffffff;
+    width: 100%;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #00ff88;
+}
+
+.leverage-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.leverage-selector label {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+}
+
+#leverage-select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 8px;
+    background: rgba(0, 255, 136, 0.05);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%2300ff88' viewBox='0 0 16 16'%3e%3cpath d='m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+}
+
+#leverage-select:focus {
+    outline: none;
+    border-color: #00ff88;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+/* Sélection direction */
+.direction-selector {
+    margin-top: 0.5rem;
+}
+
+.direction-selector label {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.direction-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+}
+
+.btn-direction {
+    padding: 0.8rem;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-direction.btn-long {
+    background: rgba(0, 255, 136, 0.1);
+    color: #00ff88;
+    border-color: rgba(0, 255, 136, 0.3);
+}
+
+.btn-direction.btn-short {
+    background: rgba(255, 71, 87, 0.1);
+    color: #ff4757;
+    border-color: rgba(255, 71, 87, 0.3);
+}
+
+.btn-direction.active.btn-long {
+    background: linear-gradient(45deg, #00ff88, #00ccff);
+    color: #000011;
+    border-color: #00ff88;
+}
+
+.btn-direction.active.btn-short {
+    background: linear-gradient(45deg, #ff4757, #ff6b7a);
+    color: #ffffff;
+    border-color: #ff4757;
+}
+
+/* TP et SL */
+.tp-sl-section {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.tp-sl-section .form-group {
+    flex: 1;
+}
+
+.tp-percentage {
+    color: #00ff88;
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
+}
+
+.sl-percentage {
+    color: #ff4757;
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
+}
+
+/* Bouton de lancement */
+.launch-trade {
+    margin-top: 0.5rem;
+}
+
+.btn-launch-trade {
+    background: linear-gradient(45deg, #00ccff, #9945ff);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.btn-launch-trade:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 204, 255, 0.3);
+}
+
+
+.trading-bottom {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    display: flex;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    align-items: stretch;
+}
+
+.positions-section {
+    width: 50%; /* Même largeur que Actions */
+    flex: 1; /* Prendre l'espace disponible */
+    min-height: 400px; /* Hauteur minimum identique */
+}
+
+
+
+.positions-section,
+.history-section {
+    background: rgba(0, 255, 136, 0.05);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 15px;
+    padding: 1.5rem;
+}
+
+.positions-section h3,
+.history-section h3 {
+    color: #00ff88;
+    margin: 0 0 1rem;
+}
+
+/* ===== CONTENEURS SCROLL ===== */
+.scroll-container {
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding-right: 0.5rem;
+}
+
+.scroll-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+    background: rgba(0, 255, 136, 0.1);
+    border-radius: 3px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 136, 0.5);
+    border-radius: 3px;
+}
+
+/* ===== ITEMS POSITIONS/TRADES ===== */
+.position-item,
+.trade-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+}
+
+
+
+
+.trade-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  background: rgba(0, 20, 40, 0.4);
+  border: 1px solid rgba(0, 255, 136, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.trade-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 250px; /* Largeur fixe pour la première colonne */
+  flex-shrink: 0;
+}
+
+.trade-type {
+  width: 180px; /* Largeur fixe pour le type */
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap; /* Permet le retour à la ligne contrôlé */
+}
+
+
+/* Style pour le texte (AUTO) */
+.trade-type .auto-text {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: normal;
+}
+
+.trade-separator {
+  width: 3px;
+  height: 35px;
+  background: linear-gradient(180deg, #00ff88 0%, rgba(0, 255, 136, 0.5) 100%);
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+
+.trade-details {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.trade-details strong {
+  color: #ffffff !important;
+  text-align: left !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+.position-item.long {
+    border-left: 4px solid #00ff88;
+}
+
+.position-item.short {
+    border-left: 4px solid #ff4757;
+}
+
+.position-info,
+.trade-info {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    flex: 1;
+}
+
+.position-details,
+.trade-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.position-details strong,
+.trade-details strong {
+    color: #ffffff;
+}
+
+.position-details small,
+.trade-details small {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8rem;
+}
+
+.position-value,
+.trade-value {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+}
+
+.position-value strong,
+.trade-value strong {
+    color: #00ff88;
+}
+
+.position-value .positive,
+.trade-value .positive {
+    color: #00ff88;
+}
+
+.position-value .negative,
+.trade-value .negative {
+    color: #ff4757;
+}
+
+/* ===== BOUTONS ACTION ===== */
+.btn-close {
+    background: rgba(255, 71, 87, 0.2);
+    border: 1px solid #ff4757;
+    color: #ff4757;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.btn-close:hover {
+    background: rgba(255, 71, 87, 0.4);
+}
+
+.btn-edit {
+    background: rgba(255, 193, 7, 0.2);
+    border: 1px solid #ffc107;
+    color: #ffc107;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.btn-edit:hover {
+    background: rgba(255, 193, 7, 0.4);
+}
+
+
+
+/* ===== MESSAGES VIDES ===== */
+.no-positions,
+.no-trades {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    padding: 2rem;
+    font-style: italic;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .trading-interface {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+    }
+    
+    .trading-controls {
+        grid-column: 1 / -1;
+        grid-row: 2 / 3;
+    }
+    
+    .trading-bottom {
+        grid-column: 1 / -1;
+        grid-row: 3 / 4;
+        grid-template-columns: 1fr;
+        
+    }
+}
+
+
+
+
+
+
+
+
+/* ===== POPUP EDIT POSITION ===== */
+.edit-position-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.edit-position-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.edit-position-popup {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border: 2px solid rgba(0, 255, 136, 0.3);
+    border-radius: 15px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.edit-position-overlay.active .edit-position-popup {
+    transform: scale(1);
+}
+
+.edit-popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+    padding-bottom: 1rem;
+}
+
+.edit-popup-header h3 {
+    color: #00ff88;
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.edit-popup-close {
+    background: none;
+    border: none;
+    color: #ff4757;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.edit-popup-close:hover {
+    background: rgba(255, 71, 87, 0.2);
+}
+
+.edit-popup-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.edit-position-info {
+    background: rgba(0, 255, 136, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.edit-tpsl-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.edit-popup-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.btn-edit-save {
+    background: linear-gradient(45deg, #00ff88, #00ccff);
+    color: #000;
+    font-weight: bold;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-edit-cancel {
+    background: rgba(255, 71, 87, 0.2);
+    color: #ff4757;
+    border: 1px solid #ff4757;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .edit-position-popup {
+        width: 95%;
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    
+    .edit-tpsl-inputs {
+        grid-template-columns: 1fr;
+    }
+    
+    .edit-popup-buttons {
+        flex-direction: column;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Animations */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.create-sheet-prompt,
+.sheet-header,
+.sheet-iframe-container {
+    animation: slideInUp 0.5s ease forwards;
+}
+
+.create-sheet-prompt {
+    animation-delay: 0.1s;
+}
+
+.sheet-header {
+    animation-delay: 0.2s;
+}
+
+.sheet-iframe-container {
+    animation-delay: 0.3s;
+}
+
+/* Très petits écrans */
+@media (max-width: 480px) {
+    .crypto-current-price {
+        font-size: 1.6rem !important;
+    }
+    
+    .crypto-change-24h {
+        font-size: 1rem !important;
+    }
+    
+    .crypto-stats {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+    
+    /* Graphique encore plus grand sur très petit écran */
+    .trading-chart-container {
+        height: 650px !important;
+        min-height: 65vh !important;
+    }
+    
+    #trading-chart {
+        height: 630px !important;
+        min-height: calc(65vh - 20px) !important;
+    }
+}
+
+
+
+
+
+/* ===== MOBILE : BLOCS PLEINE LARGEUR ===== */
+@media (max-width: 768px) {
+    /* ===== LAYOUT TRADING ===== */
+    .trading-controls {
+        grid-column: 1 / -1 !important;
+        grid-row: 2 / 3 !important;
+        max-width: none !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1.5rem;
+    }
+    
+    .trading-portfolio,
+    .crypto-selector {
+        width: 100% !important;
+        max-width: none !important;
+    }
+    
+    /* ===== CRYPTO HEADER MOBILE ===== */
+    .crypto-header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .crypto-main-info {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.8rem;
+        width: 100%;
+    }
+    
+    .crypto-main-icon {
+        width: 60px !important;
+        height: 60px !important;
+        font-size: 2rem !important;
+        flex-shrink: 0;
+    }
+    
+    .crypto-price-info {
+        flex-direction: column !important;
+        gap: 0.5rem;
+        width: 100%;
+    }
+    
+    .crypto-price-info h2 {
+        font-size: 1.2rem !important;
+        text-align: center;
+    }
+    
+    .crypto-current-price {
+        font-size: 1.8rem !important;
+        text-align: center;
+        margin: 0 !important;
+    }
+    
+    .crypto-change-24h {
+        font-size: 1.2rem !important;
+        align-self: center;
+        width: fit-content;
+        margin: 0 !important;
+        line-height: 1 !important;
+    }
+    
+    .crypto-stats {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 0.3rem !important;
+        width: 100%;
+    }
+
+    .stat-group {
+        background: rgba(0, 20, 40, 0.4) !important;
+        padding: 0.5rem !important;
+        border-radius: 6px !important;
+        border: 1px solid rgba(0, 255, 136, 0.1) !important;
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    .stat-label {
+        font-size: 0.7rem !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .stat-value {
+        font-size: 0.8rem !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    /* ===== LISTE CRYPTOS MOBILE ===== */
+    .crypto-item {
+        padding: 1rem !important;
+        border: 1px solid rgba(0, 255, 136, 0.3) !important;
+        min-height: 60px !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 1rem !important;
+    }
+    
+    /* FORCER le style des prix sur mobile */
+.crypto-item div[style*="text-align: right"] {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-end !important;
+  gap: 2px !important;
+}
+    .crypto-item .crypto-price {
+      font-size: 1.1rem !important;
+      font-weight: 700 !important;
+    }
+
+    .crypto-item > div:last-child small {
+      font-size: 0.75rem !important;
+    }
+    
+    .crypto-info {
+        flex: 1 !important;
+        min-width: 0 !important;
+        display: block !important;
+    }
+    
+    .crypto-info strong {
+        color: #ffffff !important;
+        font-size: 1rem !important;
+        display: block !important;
+        font-weight: bold !important;
+        margin-bottom: 2px !important;
+        max-width: 120px !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    .crypto-info small {
+        color: rgba(255, 255, 255, 0.7) !important;
+        font-size: 0.85rem !important;
+        display: block !important;
+        max-width: 120px !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+    
+
+
+    
+    .crypto-price {
+        color: #00ff88 !important;
+        font-weight: 700 !important;
+        font-size: 1.1rem !important;
+        flex-shrink: 0 !important;
+    }
+    
+    .crypto-logo {
+        width: 30px !important;
+        height: 30px !important;
+        border-radius: 50% !important;
+        flex-shrink: 0 !important;
+    }
+    
+    .crypto-icon-fallback {
+        width: 30px !important;
+        text-align: center !important;
+        flex-shrink: 0 !important;
+        font-size: 1.5rem !important;
+    }
+
+    /* ===== GRAPHIQUE MOBILE ===== */
+    .trading-chart-container {
+        height: 700px !important;
+        min-height: 70vh !important;
+        padding: 0.3rem !important;
+    }
+
+    #trading-chart {
+        height: calc(100% - 0.6rem) !important;
+        min-height: calc(70vh - 1rem) !important;
+    }
+
+    /* FORCER L'ORDRE MOBILE */
+    .trading-interface {
+        grid-template-rows: auto auto auto !important;
+    }
+    
+    .trading-chart-container {
+        grid-row: 1 !important;
+        order: 1;
+    }
+    
+    .trading-controls {
+        grid-column: 1 / -1 !important;
+        grid-row: 2 !important;
+        order: 2;
+    }
+    
+    .trading-bottom {
+        grid-column: 1 / -1 !important;
+        grid-row: 3 !important;
+        order: 3;
+        flex-direction: column !important; /* Un bloc par ligne sur mobile */
+        gap: 1rem;
+    }
+    
+    .trading-actions,
+    .positions-section {
+        width: 100% !important;
+    }
+
+        .trading-bottom {
+        grid-column: 1 / -1 !important;
+        grid-row: 3 !important;
+        order: 3;
+        flex-direction: column !important;
+        gap: 1rem;
+    }
+    
+    .trading-actions {
+        width: 100% !important;
+        order: 1; /* Actions en premier */
+    }
+    
+    .positions-section {
+        width: 100% !important;
+        order: 2; /* Positions en second */
+    }
+
+        .trading-actions,
+    .positions-section {
+        width: 100% !important;
+        height: auto !important; /* Hauteur automatique */
+        min-height: auto !important; /* Pas de hauteur minimum */
+        flex: none !important; /* Ne pas étirer */
+    }
+    
+    .positions-section {
+        order: 2;
+        /* S'adapter au contenu */
+        max-height: none;
+        overflow: visible;
+    }
+    
+    /* Container des positions s'adapte aussi */
+    .positions-section .scroll-container {
+        max-height: none !important; /* Supprimer la limite sur mobile */
+        overflow: visible !important; /* Tout afficher */
+    }
+
+}
+
+
+/* ===== TRÈS PETITS ÉCRANS : UN PAR LIGNE ===== */
+@media (max-width: 480px) {
+    .trading-controls {
+        grid-template-columns: 1fr !important; /* Un bloc par ligne */
+        gap: 1.5rem;
+    }
+
+
+
+    
+}

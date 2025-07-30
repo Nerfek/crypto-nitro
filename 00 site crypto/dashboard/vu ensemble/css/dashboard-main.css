@@ -1,0 +1,801 @@
+/* ===== DASHBOARD/CSS/DASHBOARD-MAIN.CSS ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.dashboard-body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: linear-gradient(135deg, #000011 0%, #1a1a2e 50%, #16213e 100%);
+    color: #ffffff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ===== HEADER DASHBOARD ===== */
+.dashboard-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background: rgba(0, 0, 17, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 255, 136, 0.3);
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo-dashboard a {
+    color: #00ff88;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    position: relative;
+    cursor: pointer;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, #00ff88, #00ccff);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.user-name {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.user-dropdown {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: rgba(0, 0, 17, 0.95);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 10px;
+    padding: 0.5rem 0;
+    min-width: 150px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.user-info:hover .user-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.user-dropdown a {
+    display: block;
+    padding: 0.8rem 1rem;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.user-dropdown a:hover {
+    background: rgba(0, 255, 136, 0.1);
+    color: #00ff88;
+}
+
+/* ===== CONTAINER PRINCIPAL ===== */
+
+/* ===== SECTIONS ===== */
+.dashboard-section.active {
+    display: block;
+}
+
+
+.section-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.section-header h2 {
+    color: #00ff88;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.section-header p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1rem;
+}
+
+/* ===== BOUTONS ===== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    gap: 0.5rem;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #00ff88, #00ccff);
+    color: #000011;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 255, 136, 0.3);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.btn-full {
+    width: 100%;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* ===== DASHBOARD ===== */
+.user-dashboard {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000011;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.user-dashboard.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* ===== FORMULAIRES ===== */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 8px;
+    background: rgba(0, 255, 136, 0.05);
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #00ff88;
+    box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+}
+
+
+/* ===== MAIN CONTENT ===== */
+.dashboard-main {
+    flex: 1;
+    padding: 2rem;
+    padding-top: 100px;
+    overflow-y: auto;
+    background: linear-gradient(135deg, #000011 0%, #001122 50%, #000033 100%);
+}
+
+.dashboard-header {
+    margin-bottom: 2rem;
+}
+
+.dashboard-header h2 {
+    color: #00ff88;
+    margin: 0 0 0.5rem;
+}
+
+.dashboard-header p {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+}
+
+.dashboard-section {
+    display: block;
+}
+
+.dashboard-section.active {
+    display: block;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== CARDS ET GRID ===== */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.dashboard-card {
+    background: rgba(0, 255, 136, 0.05);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 15px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    border-color: #00ff88;
+    box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.card-header h3 {
+    color: #ffffff;
+    margin: 0;
+    font-size: 1rem;
+}
+
+.card-icon {
+    font-size: 1.5rem;
+    opacity: 0.7;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.metric-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #00ff88;
+}
+
+.metric-change {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.metric-change.positive {
+    color: #00ff88;
+}
+
+.metric-change.negative {
+    color: #ff4757;
+}
+
+
+
+/* ===== BARRES DE PROGRESSION ===== */
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 0.5rem 0;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00ff88, #00ccff);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+/* ===== BADGES ===== */
+.activity-badge {
+    background: rgba(0, 255, 136, 0.2);
+    color: #00ff88;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* ===== UTILITAIRES ===== */
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+
+
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .dashboard-main {
+        padding: 1rem;
+    }
+    
+    .section-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .metric-value {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        padding: 0 1rem;
+    }
+    
+    .logo-dashboard a {
+        font-size: 1.2rem;
+    }
+    
+    .user-name {
+        display: none;
+    }
+    
+    .dashboard-main {
+        padding: 1rem 0.5rem;
+    }
+    
+    .section-header {
+        margin-bottom: 1rem;
+    }
+    
+    .section-header h2 {
+        font-size: 1.3rem;
+    }
+    
+    .section-header p {
+        font-size: 0.9rem;
+    }
+}
+
+
+
+
+
+
+/* ===== OPTIMISATION MOBILE DASHBOARD ===== */
+
+/* Navigation mobile en bas */
+.mobile-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-top: 1px solid rgba(0, 255, 136, 0.3);
+    z-index: 1000;
+    padding: 0;
+}
+
+.mobile-nav-items {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    padding: 0 10px;
+}
+
+.mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 8px 4px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.7rem;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+.mobile-nav-item.active {
+    color: #00ff88;
+    background: rgba(0, 255, 136, 0.1);
+}
+
+.mobile-nav-item .icon {
+    font-size: 1.2rem;
+    margin-bottom: 2px;
+}
+
+.mobile-nav-item .label {
+    font-size: 0.6rem;
+    font-weight: 500;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 768px) {
+    /* Cacher sidebar desktop */
+    .dashboard-sidebar {
+        transform: translateX(-100%);
+        position: fixed;
+        z-index: 999;
+        transition: transform 0.3s ease;  
+    }
+    
+    .dashboard-sidebar.open {
+        transform: translateX(0);
+    }
+    
+    /* Ajuster le main content */
+    .dashboard-main {
+        margin-left: 0;
+        width: 100%;
+        padding: 100px 15px 80px 15px; /* ← AJOUTER 100px au début */
+        min-height: 100vh; /* ← AJOUTER CETTE LIGNE */
+    }
+    
+    /* Afficher navigation mobile */
+    .mobile-nav {
+        display: block;
+    }
+    
+    /* Header mobile */
+    .dashboard-header {
+        padding: 0 15px;
+    }
+    
+    .header-content {
+        justify-content: space-between;
+    }
+
+    
+    /* Sections dashboard mobile */
+    .dashboard-section {
+        padding: 15px;
+    }
+    
+    .section-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    /* Grilles responsive */
+    .overview-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+    
+    .metric-card {
+        padding: 15px;
+    }
+    
+    .metric-value {
+        font-size: 1.2rem;
+    }
+    
+    /* Trading interface mobile */
+    .trading-interface {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .trading-chart-container {
+        width: 100%;
+        height: 300px;
+    }
+    
+    .trading-controls {
+        width: 100%;
+        order: 2;
+    }
+    
+    .trading-actions {
+        width: 100%;
+        order: 3;
+    }
+    
+    /* Crypto selector mobile */
+    .crypto-list {
+        display: flex;
+        overflow-x: auto;
+        gap: 10px;
+        padding: 10px 0;
+    }
+    
+    .crypto-item {
+        min-width: 120px;
+        flex-shrink: 0;
+    }
+    
+    /* Boutons mobiles plus gros */
+    .btn {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+        min-height: 44px;
+    }
+    
+    .trade-buttons .btn {
+        margin: 5px 0;
+    }
+    
+    /* Formulaires mobile */
+    input, select {
+        padding: 12px;
+        font-size: 16px; /* Éviter zoom iOS */
+    }
+    
+    /* Portfolio stats mobile */
+    .portfolio-stats {
+        gap: 10px;
+    }
+    
+    .stat-item {
+        padding: 10px;
+        text-align: center;
+    }
+    
+    /* Activité récente mobile */
+    .activity-list {
+        gap: 8px;
+    }
+    
+    .activity-item {
+        padding: 12px;
+        border-radius: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .overview-grid {
+        grid-template-columns: 1fr;
+    }
+        
+    .mobile-nav {
+        height: 70px; /* Garder 70px pour avoir la place des labels */
+    }
+    
+    .dashboard-main {
+        padding-bottom: 80px; /* Augmenter pour compenser */
+    }
+    
+    .metric-card {
+        padding: 12px;
+    }
+    
+    .trading-chart-container {
+        height: 250px;
+    }
+    
+    /* Ajuster la taille des labels pour très petits écrans */
+    .mobile-nav-item .label {
+        font-size: 0.55rem;
+    }
+    
+    .mobile-nav-item .icon {
+        font-size: 1.1rem;
+        margin-bottom: 1px;
+    }
+}
+
+/* Mode paysage mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .trading-chart-container {
+        height: 200px;
+    }
+    
+    .overview-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Animations tactiles */
+@media (max-width: 768px) {
+    .metric-card:active,
+    .crypto-item:active,
+    .btn:active {
+        transform: scale(0.98);
+        transition: transform 0.1s;
+    }
+    
+    /* Améliorer zones tactiles */
+    .nav-item,
+    .mobile-nav-item {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
+/* ===== CORRECTIONS MOBILE HEADER ===== */
+@media (max-width: 768px) {
+    /* Dropdown ABSOLU au-dessus */
+    .user-dropdown {
+        position: absolute !important;
+        top: 50px !important;
+        right: 0 !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        transform: translateY(-10px) !important;
+        background: rgba(0, 0, 17, 0.95) !important;
+        backdrop-filter: blur(15px) !important;
+        border: 1px solid rgba(0, 255, 136, 0.3) !important;
+        border-radius: 10px !important;
+        z-index: 10001 !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    /* Afficher au clic */
+    .user-info.active .user-dropdown {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translateY(0) !important;
+    }
+}
+
+/* ===== SUPPRESSION TOTALE BURGER MENU ===== */
+.mobile-burger,
+#mobile-burger,
+[id*="burger"],
+[class*="burger"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    left: -9999px !important;
+}
+
+/* Force la sidebar à rester cachée sur mobile */
+@media (max-width: 768px) {
+    .dashboard-sidebar {
+        transform: translateX(-100%) !important;
+        transition: none !important;
+    }
+    
+    .dashboard-sidebar.open {
+        transform: translateX(-100%) !important;
+    }
+}
+
+
+
+@media (max-width: 768px) {
+    .dashboard-sidebar {
+        display: none !important;
+    }
+    
+    .dashboard-container {
+        flex-direction: row !important;
+    }
+    
+    .dashboard-main {
+        padding: 100px 15px 100px 15px !important; /* ← LIGNE COMPLÈTE */
+        min-height: 100vh !important; /* ← AJOUTER */
+    }
+}
+
+
+/* ===== TRADING MOBILE FIX ===== */
+@media (max-width: 768px) {
+    .trading-interface {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+    
+    .trading-chart-container {
+        width: 100% !important;
+        height: 400px !important;
+        order: 1;
+    }
+    
+    .trading-controls {
+        width: 100% !important;
+        order: 2;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .trading-actions {
+        width: 100% !important;
+        order: 3;
+    }
+    
+    .crypto-list {
+        display: flex;
+        overflow-x: auto;
+        gap: 10px;
+        padding: 10px 0;
+    }
+    
+    .crypto-item {
+        min-width: 120px;
+        flex-shrink: 0;
+    }
+}
+
+/* Bouton admin spécial */
+.btn-admin {
+    background: linear-gradient(45deg, #ff8800, #ff6b35) !important;
+    color: #000 !important;
+    border: 2px solid #ff8800 !important;
+    font-weight: bold !important;
+    box-shadow: 0 5px 15px rgba(255, 136, 0, 0.3) !important;
+}
+
+.btn-admin:hover {
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 10px 25px rgba(255, 136, 0, 0.5) !important;
+    background: linear-gradient(45deg, #ff6b35, #ffa502) !important;
+}

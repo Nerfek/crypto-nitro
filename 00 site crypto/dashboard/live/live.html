@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live - Crypto-Nitro</title>
+    
+    <link rel="icon" type="image/png" href="../../logo/fusee-crypto-nitro.png">
+
+    <!-- CSS partagé -->
+    <link rel="stylesheet" href="../vu%20ensemble/css/dashboard-main.css">
+    <link rel="stylesheet" href="../vu%20ensemble/css/dashboard-nav.css">
+    <!-- CSS spécifique live -->
+    <link rel="stylesheet" href="css/live.css">
+</head>
+<body class="dashboard-body">
+    
+    <!-- Header Dashboard -->
+    <header class="dashboard-header">
+        <div class="header-content">
+            <div class="logo-dashboard">
+                <a href="../../index.html">🚀 CryptoTraders Pro</a>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <div class="user-avatar" id="user-avatar">👨‍🚀</div>
+                    <span class="user-name" id="user-name">Astronaute</span>
+                    <div class="user-dropdown">
+                        <a href="../vu%20ensemble/dashboard.html">🏠 Dashboard</a>
+                        <a href="../../index.html" id="logout-btn">🚪 Déconnexion</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Container Principal -->
+    <div class="dashboard-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-user">
+                <div class="sidebar-avatar" id="sidebar-avatar">👨‍🚀</div>
+                <h3 id="sidebar-user-name">Astronaute</h3>
+                <p class="user-rank" id="user-rank">🚀 Cadet Spatial</p>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="../vu%20ensemble/dashboard.html" class="nav-item">
+                    📊 Vue d'ensemble
+                </a>
+                <a href="../formations/formations.html" class="nav-item">
+                    🎓 Formations
+                </a>
+                <a href="#" class="nav-item active" onclick="return false;">
+                    📺 Live
+                </a>
+                <a href="../trading/trading.html" class="nav-item">
+                    📈 Trading
+                </a>
+                <a href="../tableau/tableau.html" class="nav-item">
+                    📋 Tableau
+                </a>
+                <a href="../portfolio/portfolio.html" class="nav-item">
+                    💼 Portfolio
+                </a>
+                <a href="../parametres/parametres.html" class="nav-item">
+                    ⚙️ Paramètres
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="../../index.html" class="btn btn-secondary btn-full">
+                    🌍 Retour au site
+                </a>
+            </div>
+        </aside>
+        
+        <!-- Contenu Principal -->
+        <main class="dashboard-main">
+            
+            <!-- Live en cours banner (si live actif) -->
+            <div class="live-banner" id="live-banner" style="display: none;">
+                <div class="banner-content">
+                    <div class="live-pulse"></div>
+                    <div class="banner-text">
+                        <strong>🔴 Live en cours :</strong>
+                        <span id="current-live-title">Analyse Technique Avancée</span>
+                    </div>
+                    <div class="banner-viewers">
+                        <span id="live-viewers-count">127</span> spectateurs
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section Live principale -->
+            <section class="live-section">
+                
+                <!-- Zone Vidéo YouTube + Chat -->
+                <div class="live-container">
+                    
+                    <!-- Zone vidéo principale -->
+                    <div class="video-zone">
+                        <!-- Protection d'accès -->
+                        <div class="access-gate" id="access-gate">
+                            <div class="gate-content">
+                                <div class="lock-animation">
+                                    <div class="lock-icon">🔐</div>
+                                    <div class="unlock-progress" id="unlock-progress"></div>
+                                </div>
+                                <h3>Vérification de l'accès...</h3>
+                                <p>Validation de votre abonnement en cours</p>
+                                <div class="verification-status" id="verification-status">
+                                    <div class="status-item">
+                                        <span class="status-icon loading">⏳</span>
+                                        <span>Authentification</span>
+                                    </div>
+                                    <div class="status-item">
+                                        <span class="status-icon loading">⏳</span>
+                                        <span>Vérification abonnement</span>
+                                    </div>
+                                    <div class="status-item">
+                                        <span class="status-icon loading">⏳</span>
+                                        <span>Accès au contenu</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Placeholder quand pas de live -->
+                        <div class="video-placeholder" id="video-placeholder">
+                            <div class="placeholder-content">
+                                <div class="floating-elements">
+                                    <div class="float-element">📺</div>
+                                    <div class="float-element">🚀</div>
+                                    <div class="float-element">💎</div>
+                                    <div class="float-element">⭐</div>
+                                </div>
+                                <div class="placeholder-main">
+                                    <div class="placeholder-icon">🎬</div>
+                                    <h3>Aucun live en cours</h3>
+                                    <p>Les prochaines sessions apparaîtront ici automatiquement</p>
+                                    <div class="next-live-info" id="next-live-info">
+                                        <div class="next-live-card">
+                                            <span class="next-badge">Prochain live</span>
+                                            <div class="next-title">Trading Psychology</div>
+                                            <div class="next-time">
+                                                <span class="time-icon">🕐</span>
+                                                Aujourd'hui à 16:30
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- YouTube Player Container -->
+                        <div class="youtube-container" id="youtube-container" style="display: none;">
+                            <div class="video-header">
+                                <div class="live-badge">
+                                    <div class="live-dot"></div>
+                                    <span>EN DIRECT</span>
+                                </div>
+                                <div class="video-title" id="video-title">
+                                    Formation Trading Avancé
+                                </div>
+                                <div class="video-stats">
+                                    <span class="viewers-badge" id="viewers-badge">
+                                        <span class="icon">👥</span>
+                                        <span id="viewers-count">127</span>
+                                    </span>
+                                    <span class="duration-badge" id="duration-badge">
+                                        <span class="icon">⏱️</span>
+                                        <span id="live-duration">47:23</span>
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <!-- Player YouTube -->
+                            <div class="youtube-player">
+                                <iframe id="youtube-iframe" 
+                                        width="100%" 
+                                        height="100%" 
+                                        frameborder="0" 
+                                        allowfullscreen
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+                                </iframe>
+                            </div>
+                            
+                            <!-- Contrôles formateur (si admin) -->
+                            <div class="instructor-panel" id="instructor-panel" style="display: none;">
+                                <div class="panel-header">
+                                    <h4>🎓 Contrôles Formateur</h4>
+                                    <button class="panel-toggle" id="panel-toggle">📊</button>
+                                </div>
+                                <div class="panel-content">
+                                    <div class="control-row">
+                                        <button class="control-btn start-live" id="start-live-btn">
+                                            🔴 Démarrer Live
+                                        </button>
+                                        <button class="control-btn stop-live" id="stop-live-btn" style="display: none;">
+                                            ⏹️ Arrêter Live
+                                        </button>
+                                    </div>
+                                    <div class="control-row">
+                                        <button class="control-btn" id="toggle-chat-btn">
+                                            💬 Chat ON/OFF
+                                        </button>
+                                        <button class="control-btn" id="emergency-stop-btn">
+                                            🚨 Arrêt urgence
+                                        </button>
+                                    </div>
+                                    <div class="live-stats">
+                                        <div class="stat-item">
+                                            <span class="stat-label">Durée</span>
+                                            <span class="stat-value" id="admin-duration">00:00</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-label">Viewers Max</span>
+                                            <span class="stat-value" id="max-viewers">0</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-label">Messages</span>
+                                            <span class="stat-value" id="total-messages">0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sidebar Chat + Infos -->
+                    <div class="live-sidebar">
+                        
+                        <!-- Actions rapides utilisateur -->
+                        <div class="quick-actions">
+                            <div class="action-group">
+                                <button class="quick-btn" id="like-btn" title="J'aime">
+                                    <span class="btn-icon">👍</span>
+                                    <span class="btn-text">J'aime</span>
+                                    <span class="btn-count" id="like-count">24</span>
+                                </button>
+                                <button class="quick-btn" id="share-btn" title="Partager">
+                                    <span class="btn-icon">📤</span>
+                                    <span class="btn-text">Partager</span>
+                                </button>
+                                <button class="quick-btn" id="bookmark-btn" title="Sauvegarder">
+                                    <span class="btn-icon">🔖</span>
+                                    <span class="btn-text">Sauver</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Informations du live -->
+                        <div class="live-info-card">
+                            <div class="info-header">
+                                <h4 id="live-title">Formation Trading Avancé</h4>
+                                <span class="instructor-badge" id="instructor-name">
+                                    👨‍🏫 Commandant Spatial
+                                </span>
+                            </div>
+                            <div class="info-description" id="live-description">
+                                Masterclass complète sur l'analyse technique et les stratégies de trading professionnel. Apprenez à lire les graphiques comme un expert !
+                            </div>
+                            <div class="info-tags">
+                                <span class="tag">📈 Trading</span>
+                                <span class="tag">⭐ Avancé</span>
+                                <span class="tag">🎯 Stratégie</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Chat Container -->
+                        <div class="chat-container">
+                            <div class="chat-header">
+                                <div class="chat-title">
+                                    <span class="chat-icon">💬</span>
+                                    <span>Chat Live</span>
+                                </div>
+                                <div class="chat-stats">
+                                    <div class="online-indicator">
+                                        <div class="indicator-dot"></div>
+                                        <span id="online-count">156</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Messages du chat -->
+                            <div class="chat-messages" id="chat-messages">
+                                <!-- Messages générés par JS -->
+                            </div>
+                            
+                            <!-- Zone de saisie -->
+                            <div class="chat-input-zone">
+                                <div class="chat-status" id="chat-status">
+                                    <div class="status-icon">💬</div>
+                                    <span>Chat activé pendant les lives</span>
+                                </div>
+                                <form class="chat-form" id="chat-form">
+                                    <div class="input-container">
+                                        <input type="text" 
+                                               id="chat-input" 
+                                               placeholder="Participez à la discussion..." 
+                                               maxlength="500"
+                                               disabled>
+                                        <button type="submit" 
+                                                id="send-btn" 
+                                                disabled
+                                                title="Envoyer">
+                                            <span class="send-icon">🚀</span>
+                                        </button>
+                                    </div>
+                                    <div class="input-tools">
+                                        <div class="emoji-picker-btn" id="emoji-btn" title="Emojis">😊</div>
+                                        <div class="char-counter">
+                                            <span id="char-count">0</span>/500
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agenda des lives - Version redesignée -->
+                <div class="agenda-section">
+                    <div class="agenda-header">
+                        <h3>📅 Planning des Lives</h3>
+                        <div class="agenda-controls">
+                            <button class="agenda-btn active" data-view="week">Cette semaine</button>
+                            <button class="agenda-btn" data-view="month">Ce mois</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Vue hebdomadaire -->
+                    <div class="agenda-view" id="week-view">
+                        <div class="timeline-header">
+                            <div class="timeline-nav">
+                                <button class="nav-btn" id="prev-week">‹</button>
+                                <span class="week-range" id="week-range">20 - 26 Janvier 2025</span>
+                                <button class="nav-btn" id="next-week">›</button>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-grid">
+                            <!-- Jours de la semaine -->
+                            <div class="timeline-days">
+                                <div class="day-column" data-day="lundi">
+                                    <div class="day-header">
+                                        <span class="day-name">LUN</span>
+                                        <span class="day-number">20</span>
+                                        <div class="day-indicator">
+                                            <span class="live-dot"></span>
+                                            <span class="live-count">2</span>
+                                        </div>
+                                    </div>
+                                    <div class="day-timeline">
+                                        <div class="live-slot" data-time="10:00">
+                                            <div class="slot-time">10:00</div>
+                                            <div class="slot-content">
+                                                <div class="slot-title">Trading Matinal</div>
+                                                <div class="slot-duration">1h</div>
+                                            </div>
+                                        </div>
+                                        <div class="live-slot" data-time="18:00">
+                                            <div class="slot-time">18:00</div>
+                                            <div class="slot-content">
+                                                <div class="slot-title">Stratégies Avancées</div>
+                                                <div class="slot-duration">2h</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="day-column" data-day="mardi">
+                                    <div class="day-header">
+                                        <span class="day-name">MAR</span>
+                                        <span class="day-number">21</span>
+                                        <div class="day-indicator">
+                                            <span class="live-dot"></span>
+                                            <span class="live-count">1</span>
+                                        </div>
+                                    </div>
+                                    <div class="day-timeline">
+                                        <div class="live-slot" data-time="15:00">
+                                            <div class="slot-time">15:00</div>
+                                            <div class="slot-content">
+                                                <div class="slot-title">Analyse Fondamentale</div>
+                                                <div class="slot-duration">1h30</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="day-column active" data-day="mercredi">
+                                    <div class="day-header">
+                                        <span class="day-name">MER</span>
+                                        <span class="day-number">22</span>
+                                        <div class="day-indicator current">
+                                            <span class="live-dot"></span>
+                                            <span class="live-count">3</span>
+                                        </div>
+                                    </div>
+                                    <div class="day-timeline">
+                                        <div class="live-slot current" data-time="14:00">
+                                            <div class="slot-time">14:00</div>
+                                            <div class="slot-content">
+                                                <div class="slot-title">Introduction Trading</div>
+                                                <div class="slot-duration">1h30</div>
+                                                <div class="slot-status live">🔴 EN COURS</div>
+                                            </div>
+                                        </div>
+                                        <div class="live-slot next" data-time="16:30">
+                                            <div class="slot-time">16:30</div>
+                                            <div class="slot-content">
+                                                <div class="slot-title">Analyse Technique</div>
+                                                <div class="slot-duration">2h</div>
+                                                <div class="slot-status">📅 À venir</div>
+                                            </div>
+                                        </div>
+                                        <div class="live-slot" data-time="20:00">
+                                            <div class="slot-time">20:00</div>
+                                            <div class="slot-content">
+                                                <div class="slot-title">Session Q&A</div>
+                                                <div class="slot-duration">1h</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Autres jours... -->
+                                <div class="day-column" data-day="jeudi">
+                                    <div class="day-header">
+                                        <span class="day-name">JEU</span>
+                                        <span class="day-number">23</span>
+                                        <div class="day-indicator">
+                                            <span class="live-dot"></span>
+                                            <span class="live-count">1</span>
+                                        </div>
+                                    </div>
+                                    <div class="day-timeline">
+                                        <div class="live-slot" data-time="19:00">
+                                            <div class="slot-time">19:00</div>
+                                            <div class="slot-content">
+                                                <div class="slot-title">Gestion du Risque</div>
+                                                <div class="slot-duration">1h45</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="day-column" data-day="vendredi">
+                                    <div class="day-header">
+                                        <span class="day-name">VEN</span>
+                                        <span class="day-number">24</span>
+                                        <div class="day-indicator">
+                                            <span class="live-dot"></span>
+                                            <span class="live-count">2</span>
+                                        </div>
+                                    </div>
+                                    <div class="day-timeline">
+                                        <div class="live-slot" data-time="16:00">
+                                            <div class="slot-time">16:00</div>
+                                            <div class="slot-content">
+                                                <div class="slot-title">Revue Semaine</div>
+                                                <div class="slot-duration">1h</div>
+                                            </div>
+                                        </div>
+                                        <div class="live-slot" data-time="21:00">
+                                            <div class="slot-time">21:00</div>
+                                            <div class="slot-content">
+                                                <div class="slot-title">Trading Weekend</div>
+                                                <div class="slot-duration">2h</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="day-column" data-day="samedi">
+                                    <div class="day-header">
+                                        <span class="day-name">SAM</span>
+                                        <span class="day-number">25</span>
+                                        <div class="day-indicator">
+                                            <span class="live-dot"></span>
+                                            <span class="live-count">1</span>
+                                        </div>
+                                    </div>
+                                    <div class="day-timeline">
+                                        <div class="live-slot special" data-time="11:00">
+                                            <div class="slot-time">11:00</div>
+                                            <div class="slot-content">
+                                                <div class="slot-title">Masterclass Crypto</div>
+                                                <div class="slot-duration">3h</div>
+                                                <div class="slot-badge">🌟 Premium</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="day-column" data-day="dimanche">
+                                    <div class="day-header">
+                                        <span class="day-name">DIM</span>
+                                        <span class="day-number">26</span>
+                                        <div class="day-indicator empty">
+                                            <span class="rest-icon">😴</span>
+                                        </div>
+                                    </div>
+                                    <div class="day-timeline">
+                                        <div class="rest-day">
+                                            <div class="rest-message">Jour de repos</div>
+                                            <div class="rest-subtitle">Profitez-en pour réviser !</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+        
+        <!-- Navigation Mobile -->
+        <nav class="mobile-nav">
+            <div class="mobile-nav-items">
+                <a href="../vu%20ensemble/dashboard.html" class="mobile-nav-item">
+                    <span class="icon">📊</span>
+                    <span class="label">Dashboard</span>
+                </a>
+                <a href="../formations/formations.html" class="mobile-nav-item">
+                    <span class="icon">🎓</span>
+                    <span class="label">Formation</span>
+                </a>
+                <a href="live.html" class="mobile-nav-item active">
+                    <span class="icon">📺</span>
+                    <span class="label">Live</span>
+                </a>
+                <a href="../trading/trading.html" class="mobile-nav-item">
+                    <span class="icon">📈</span>
+                    <span class="label">Trading</span>
+                </a>
+                <a href="../tableau/tableau.html" class="mobile-nav-item">
+                    <span class="icon">📋</span>
+                    <span class="label">Tableau</span>
+                </a>
+                <a href="../portfolio/portfolio.html" class="mobile-nav-item">
+                    <span class="icon">💼</span>
+                    <span class="label">Portfolio</span>
+                </a>
+                <a href="../parametres/parametres.html" class="mobile-nav-item">
+                    <span class="icon">⚙️</span>
+                    <span class="label">Profil</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Modal d'accès -->
+    <div class="modal" id="access-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🔐 Accès Premium Requis</h3>
+            </div>
+            <div class="modal-body">
+                <div class="upgrade-content">
+                    <div class="upgrade-icon">💎</div>
+                    <h4>Débloquez les Lives Exclusifs</h4>
+                    <p>Accédez aux sessions live premium et interagissez avec nos experts en temps réel.</p>
+                    <div class="features-list">
+                        <div class="feature-item">✅ Accès à tous les lives</div>
+                        <div class="feature-item">✅ Chat en temps réel</div>
+                        <div class="feature-item">✅ Rediffusions illimitées</div>
+                        <div class="feature-item">✅ Questions directes aux experts</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="closeModal()">Plus tard</button>
+                <button class="btn btn-primary" onclick="upgradeAccount()">Passer Premium</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    
+    <!-- Config Firebase -->
+    <script src="../../firebase/config.js"></script>
+    
+    <!-- Auth Firebase -->
+    <script src="../../firebase/auth.js"></script>
+    
+    <!-- Script Live -->
+    <script src="js/live.js"></script>
+
+    <!-- POINTS SUSTEM -->
+    <script src="../admin/points/js/points-system.js"></script>
+
+</body>
+</html>

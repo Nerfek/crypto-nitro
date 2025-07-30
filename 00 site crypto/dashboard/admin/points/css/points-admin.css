@@ -1,0 +1,835 @@
+/* ===== POINTS ADMIN CSS ===== */
+
+/* ===== CONTRÔLES POINTS ===== */
+.points-controls {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.btn-icon {
+    margin-right: 0.5rem;
+}
+
+/* ===== CONFIGURATION DES NIVEAUX ===== */
+.levels-config {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.level-config-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    background: rgba(255, 136, 0, 0.05);
+    border: 1px solid rgba(255, 136, 0, 0.2);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.level-config-item:hover {
+    background: rgba(255, 136, 0, 0.08);
+    border-color: rgba(255, 136, 0, 0.4);
+    transform: translateX(5px);
+}
+
+.level-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    min-width: 120px;
+    text-align: center;
+}
+
+.level-badge.level-1 {
+    background: rgba(46, 204, 113, 0.2);
+    color: #2ecc71;
+    border: 1px solid rgba(46, 204, 113, 0.3);
+}
+
+.level-badge.level-2 {
+    background: rgba(52, 152, 219, 0.2);
+    color: #3498db;
+    border: 1px solid rgba(52, 152, 219, 0.3);
+}
+
+.level-badge.level-3 {
+    background: rgba(241, 196, 15, 0.2);
+    color: #f1c40f;
+    border: 1px solid rgba(241, 196, 15, 0.3);
+}
+
+.level-badge.level-4 {
+    background: rgba(230, 126, 34, 0.2);
+    color: #e67e22;
+    border: 1px solid rgba(230, 126, 34, 0.3);
+}
+
+.level-badge.level-5 {
+    background: rgba(231, 76, 60, 0.2);
+    color: #e74c3c;
+    border: 1px solid rgba(231, 76, 60, 0.3);
+}
+
+.level-details {
+    flex: 1;
+    margin-left: 1.5rem;
+}
+
+.level-details h4 {
+    color: #ffffff;
+    margin: 0 0 0.3rem 0;
+    font-size: 1.1rem;
+}
+
+.level-details p {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.level-stats {
+    color: #ff8800;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* ===== CONFIGURATION POINTS PAR ACTION ===== */
+.points-config-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.points-config-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 136, 0, 0.2);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.points-config-item:hover {
+    background: rgba(255, 136, 0, 0.08);
+    border-color: rgba(255, 136, 0, 0.4);
+}
+
+.action-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+}
+
+.action-icon {
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 136, 0, 0.1);
+    border-radius: 50%;
+}
+
+.action-info h5 {
+    color: #ffffff;
+    margin: 0 0 0.2rem 0;
+    font-size: 1rem;
+}
+
+.action-info p {
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+.points-value {
+    background: linear-gradient(45deg, #ff8800, #ff6b35);
+    color: #000;
+    padding: 0.4rem 0.8rem;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* ===== DÉFIS ACTIFS ===== */
+.challenges-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.challenge-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem;
+    background: rgba(255, 136, 0, 0.05);
+    border: 1px solid rgba(255, 136, 0, 0.3);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.challenge-item:hover {
+    background: rgba(255, 136, 0, 0.1);
+    border-color: rgba(255, 136, 0, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 136, 0, 0.2);
+}
+
+.challenge-info {
+    flex: 1;
+}
+
+.challenge-info h5 {
+    color: #ffffff;
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+}
+
+.challenge-info p {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0 0 0.8rem 0;
+    font-size: 0.9rem;
+}
+
+.challenge-meta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.challenge-progress {
+    background: rgba(0, 255, 136, 0.2);
+    color: #00ff88;
+    padding: 0.2rem 0.6rem;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.challenge-deadline {
+    background: rgba(255, 193, 7, 0.2);
+    color: #ffc107;
+    padding: 0.2rem 0.6rem;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.challenge-reward {
+    background: linear-gradient(45deg, #ff8800, #ff6b35);
+    color: #000;
+    padding: 0.6rem 1rem;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 0 1rem;
+}
+
+.challenge-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* ===== CLASSEMENT ===== */
+.leaderboard-table-container {
+    overflow-x: auto;
+}
+
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 136, 0, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.leaderboard-table th {
+    background: rgba(255, 136, 0, 0.2);
+    color: #ffffff;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+.leaderboard-table td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 136, 0, 0.1);
+    color: #ffffff;
+}
+
+.leaderboard-table tr:hover {
+    background: rgba(255, 136, 0, 0.08);
+}
+
+.rank-badge {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.rank-badge.rank-1 {
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    color: #000;
+}
+
+.rank-badge.rank-2 {
+    background: linear-gradient(45deg, #c0c0c0, #e5e5e5);
+    color: #000;
+}
+
+.rank-badge.rank-3 {
+    background: linear-gradient(45deg, #cd7f32, #deb887);
+    color: #000;
+}
+
+.rank-badge.rank-other {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.user-info-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.user-avatar-small {
+    width: 35px;
+    height: 35px;
+    background: linear-gradient(45deg, #ff8800, #ff6b35);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    border: 2px solid rgba(255, 136, 0, 0.3);
+}
+
+.user-details h6 {
+    color: #ffffff;
+    margin: 0 0 0.2rem 0;
+    font-size: 0.95rem;
+}
+
+.user-details span {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.8rem;
+}
+
+.points-display {
+    background: linear-gradient(45deg, #ff8800, #ff6b35);
+    color: #000;
+    padding: 0.4rem 0.8rem;
+    border-radius: 15px;
+    font-weight: 700;
+    text-align: center;
+    min-width: 80px;
+}
+
+.level-display {
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.level-display.level-1 { background: rgba(46, 204, 113, 0.2); color: #2ecc71; }
+.level-display.level-2 { background: rgba(52, 152, 219, 0.2); color: #3498db; }
+.level-display.level-3 { background: rgba(241, 196, 15, 0.2); color: #f1c40f; }
+.level-display.level-4 { background: rgba(230, 126, 34, 0.2); color: #e67e22; }
+.level-display.level-5 { background: rgba(231, 76, 60, 0.2); color: #e74c3c; }
+
+.activity-time {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.8rem;
+}
+
+.action-buttons-small {
+    display: flex;
+    gap: 0.3rem;
+}
+
+.action-btn-small {
+    padding: 0.3rem 0.6rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.action-btn-small.edit {
+    background: rgba(52, 152, 219, 0.2);
+    color: #3498db;
+}
+
+.action-btn-small.points {
+    background: rgba(255, 136, 0, 0.2);
+    color: #ff8800;
+}
+
+.action-btn-small.ban {
+    background: rgba(231, 76, 60, 0.2);
+    color: #e74c3c;
+}
+
+.action-btn-small:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== ACTIONS EN-TÊTE ===== */
+.header-actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+/* ===== MODALES SPÉCIFIQUES POINTS ===== */
+.points-modal-content {
+    max-width: 500px;
+    width: 90%;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid rgba(255, 136, 0, 0.3);
+    border-radius: 8px;
+    background: rgba(255, 136, 0, 0.05);
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ff8800;
+    box-shadow: 0 0 0 3px rgba(255, 136, 0, 0.1);
+}
+
+.form-group select option {
+    background: #1a0033;
+    color: #ffffff;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+/* ===== BULK POINTS SECTION ===== */
+.bulk-points-section {
+    background: rgba(255, 136, 0, 0.05);
+    border: 1px solid rgba(255, 136, 0, 0.3);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.bulk-points-section h4 {
+    color: #ff8800;
+    margin-bottom: 1rem;
+}
+
+.user-selection {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid rgba(255, 136, 0, 0.2);
+    border-radius: 8px;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.user-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.user-checkbox:hover {
+    background: rgba(255, 136, 0, 0.1);
+}
+
+.user-checkbox input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+}
+
+.user-checkbox .user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.user-checkbox .user-avatar-tiny {
+    width: 25px;
+    height: 25px;
+    background: linear-gradient(45deg, #ff8800, #ff6b35);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+
+/* ===== POINTS HISTORY ===== */
+.points-history-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.points-history-table th,
+.points-history-table td {
+    padding: 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 136, 0, 0.1);
+}
+
+.points-history-table th {
+    background: rgba(255, 136, 0, 0.2);
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.points-history-table td {
+    color: #ffffff;
+}
+
+.points-amount {
+    font-weight: 600;
+}
+
+.points-amount.positive {
+    color: #00ff88;
+}
+
+.points-amount.negative {
+    color: #ff4757;
+}
+
+.reason-badge {
+    background: rgba(255, 136, 0, 0.2);
+    color: #ff8800;
+    padding: 0.2rem 0.6rem;
+    border-radius: 10px;
+    font-size: 0.8rem;
+}
+
+/* ===== CHALLENGE CREATION ===== */
+.challenge-form-section {
+    background: rgba(255, 136, 0, 0.05);
+    border: 1px solid rgba(255, 136, 0, 0.3);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.challenge-form-section h4 {
+    color: #ff8800;
+    margin-bottom: 1rem;
+}
+
+.challenge-type-selector {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.challenge-type-option {
+    padding: 1rem;
+    border: 1px solid rgba(255, 136, 0, 0.3);
+    border-radius: 8px;
+    background: rgba(255, 136, 0, 0.05);
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.challenge-type-option:hover {
+    background: rgba(255, 136, 0, 0.1);
+    border-color: rgba(255, 136, 0, 0.5);
+}
+
+.challenge-type-option.selected {
+    background: rgba(255, 136, 0, 0.2);
+    border-color: #ff8800;
+}
+
+.challenge-type-option .type-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.challenge-type-option .type-name {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+/* ===== PROGRESS BARS ===== */
+.progress-bar-container {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    height: 8px;
+    margin: 0.5rem 0;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff8800, #ff6b35);
+    border-radius: 10px;
+    transition: width 0.8s ease;
+}
+
+
+.config-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    background: rgba(0, 20, 40, 0.3);
+    border: 1px solid rgba(255, 136, 0, 0.2);
+    border-radius: 8px;
+}
+
+.config-row label {
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.config-row input {
+    width: 80px;
+    padding: 0.4rem;
+    background: rgba(0, 20, 40, 0.8);
+    border: 1px solid rgba(255, 136, 0, 0.3);
+    border-radius: 5px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.config-category {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: rgba(0, 20, 40, 0.2);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 136, 0, 0.1);
+}
+
+.config-category h5 {
+    margin: 0 0 1rem 0;
+    color: #ff8800;
+    font-size: 1.1rem;
+}
+
+
+
+/* ===== RESPONSIVE POINTS ===== */
+@media (max-width: 1024px) {
+    .level-config-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .level-details {
+        margin-left: 0;
+    }
+    
+    .challenge-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .challenge-reward {
+        margin: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .points-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .points-controls .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .level-config-item {
+        padding: 1rem;
+    }
+    
+    .level-badge {
+        min-width: 100px;
+        font-size: 0.8rem;
+    }
+    
+    .points-config-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+    }
+    
+    .action-info {
+        gap: 0.8rem;
+    }
+    
+    .challenge-item {
+        padding: 1rem;
+    }
+    
+    .challenge-actions {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .leaderboard-table-container {
+        font-size: 0.9rem;
+    }
+    
+    .leaderboard-table th,
+    .leaderboard-table td {
+        padding: 0.8rem 0.5rem;
+    }
+    
+    .user-info-cell {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .action-buttons-small {
+        flex-direction: column;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .level-badge {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .challenge-type-selector {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-row {
+        flex-direction: column;
+    }
+    
+    .header-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .header-actions .btn {
+        width: 100%;
+    }
+}
+
+/* ===== ANIMATIONS ===== */
+.level-config-item,
+.points-config-item,
+.challenge-item {
+    animation: slideInUp 0.5s ease-out;
+}
+
+.level-config-item:nth-child(1) { animation-delay: 0.1s; }
+.level-config-item:nth-child(2) { animation-delay: 0.2s; }
+.level-config-item:nth-child(3) { animation-delay: 0.3s; }
+.level-config-item:nth-child(4) { animation-delay: 0.4s; }
+.level-config-item:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== SCROLLBARS CUSTOM ===== */
+.points-config-list::-webkit-scrollbar,
+.challenges-list::-webkit-scrollbar,
+.user-selection::-webkit-scrollbar {
+    width: 6px;
+}
+
+.points-config-list::-webkit-scrollbar-track,
+.challenges-list::-webkit-scrollbar-track,
+.user-selection::-webkit-scrollbar-track {
+    background: rgba(255, 136, 0, 0.1);
+    border-radius: 3px;
+}
+
+.points-config-list::-webkit-scrollbar-thumb,
+.challenges-list::-webkit-scrollbar-thumb,
+.user-selection::-webkit-scrollbar-thumb {
+    background: rgba(255, 136, 0, 0.5);
+    border-radius: 3px;
+}
+
+.points-config-list::-webkit-scrollbar-thumb:hover,
+.challenges-list::-webkit-scrollbar-thumb:hover,
+.user-selection::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 136, 0, 0.8);
+}

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration Live - Crypto-Nitro</title>
+    
+    <!-- CSS Admin Live -->
+    <link rel="stylesheet" href="../css/admin-main.css">
+    <link rel="stylesheet" href="../css/admin-components.css">
+    <link rel="stylesheet" href="css/live-admin.css">
+    
+    <!-- Firebase CSS -->
+    <link rel="stylesheet" href="../../../user-auth.css">
+</head>
+<body class="admin-body">
+    
+    <!-- Header Admin (identique à admin.html) -->
+    <header class="admin-header">
+        <div class="header-content">
+            <div class="logo-admin">
+                <a href="../../../index.html">🛡️ CryptoTraders Pro - Live Admin</a>
+            </div>
+            
+            <div class="header-right">
+                <div class="admin-info">
+                    <span class="admin-badge">LIVE ADMIN</span>
+                    <div class="user-info">
+                        <div class="user-avatar" id="admin-avatar">👑</div>
+                        <span class="user-name" id="admin-name">Administrateur</span>
+                        <div class="user-dropdown">
+                            <a href="../../vu%20ensemble/dashboard.html">📊 Dashboard Utilisateur</a>
+                            <a href="../admin.html">🛡️ Dashboard Admin</a>
+                            <a href="../../../index.html" id="logout-btn">🚪 Déconnexion</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Container Principal Admin (structure identique à admin.html) -->
+    <div class="admin-container">
+        
+        <!-- Sidebar Navigation Admin (identique à admin.html) -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-user">
+                <div class="sidebar-avatar">👑</div>
+                <h3 id="sidebar-admin-name">Admin Live</h3>
+                <p class="admin-rank">📺 Administrateur Live</p>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="../admin.html" class="nav-item">
+                    📊 Vue d'ensemble
+                </a>
+                <a href="javascript:void(0)" class="nav-item active" data-section="live-control">
+                    📺 Contrôle Live
+                </a>
+                <a href="javascript:void(0)" class="nav-item" data-section="live-analytics">
+                    📊 Analytiques
+                </a>
+                <a href="javascript:void(0)" class="nav-item" data-section="live-chat">
+                    💬 Modération Chat
+                </a>
+                <a href="javascript:void(0)" class="nav-item" data-section="live-schedule">
+                    📅 Planning
+                </a>
+                <a href="javascript:void(0)" class="nav-item" data-section="live-users">
+                    👥 Utilisateurs
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="../admin.html" class="btn btn-secondary btn-full">
+                    🛡️ Dashboard Admin
+                </a>
+            </div>
+        </aside>
+
+        <!-- Contenu Principal Admin -->
+        <main class="admin-main">
+            
+            <!-- Status Global Live -->
+            <div class="global-live-status" id="global-live-status">
+                <div class="status-indicator offline" id="main-status-indicator"></div>
+                <div class="status-content">
+                    <h2 id="global-status-text">Aucun live en cours</h2>
+                    <p id="global-status-subtitle">Tous les systèmes sont prêts</p>
+                    <div class="status-stats">
+                        <div class="stat-pill">
+                            <span class="stat-icon">👥</span>
+                            <span id="total-viewers">0</span>
+                            <span>viewers</span>
+                        </div>
+                        <div class="stat-pill">
+                            <span class="stat-icon">⏱️</span>
+                            <span id="live-duration-display">00:00</span>
+                        </div>
+                        <div class="stat-pill">
+                            <span class="stat-icon">💬</span>
+                            <span id="total-messages-count">0</span>
+                            <span>messages</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="status-actions">
+                    <button class="btn btn-primary btn-live-start" id="main-start-btn">
+                        🔴 Démarrer Live
+                    </button>
+                    <button class="btn btn-danger btn-live-stop" id="main-stop-btn" style="display: none;">
+                        ⏹️ Arrêter Live
+                    </button>
+                    <button class="btn btn-warning btn-emergency" id="emergency-btn" style="display: none;">
+                        🚨 Arrêt d'urgence
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Section Contrôle Live -->
+            <section class="admin-section active" id="section-live-control">
+                <div class="section-header">
+                    <h2>🎛️ Contrôle Live</h2>
+                    <p>Gestion complète de la diffusion en direct</p>
+                </div>
+
+                <div class="admin-grid">
+                    <!-- Configuration Live -->
+                    <div class="admin-card">
+                        <div class="card-header">
+                            <h3>📹 Configuration</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="config-form">
+                                <div class="form-group">
+                                    <label for="live-title">Titre du Live</label>
+                                    <input type="text" id="live-title" placeholder="Ex: Formation Trading Avancé" value="Formation Trading Avancé">
+                                </div>
+                                <div class="form-group">
+                                    <label for="live-description">Description</label>
+                                    <textarea id="live-description" rows="3" placeholder="Description du live...">Masterclass complète sur l'analyse technique et les stratégies de trading professionnel.</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="youtube-url">URL YouTube Live</label>
+                                    <input type="url" id="youtube-url" placeholder="https://youtube.com/watch?v=...">
+                                    <small class="form-hint">🔗 Collez l'URL de votre live YouTube</small>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="instructor-name">Formateur</label>
+                                        <input type="text" id="instructor-name" value="Commandant Spatial">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="live-category">Catégorie</label>
+                                        <select id="live-category">
+                                            <option value="trading">📈 Trading</option>
+                                            <option value="analysis">📊 Analyse</option>
+                                            <option value="strategy">🎯 Stratégie</option>
+                                            <option value="beginner">🌱 Débutant</option>
+                                            <option value="advanced">🚀 Avancé</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Aperçu Live -->
+                    <div class="admin-card">
+                        <div class="card-header">
+                            <h3>📺 Aperçu Live</h3>
+                            <div class="preview-controls">
+                                <button class="btn btn-sm btn-secondary" id="refresh-preview">🔄</button>
+                                <button class="btn btn-sm btn-secondary" id="fullscreen-preview">⛶</button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="preview-container" id="preview-container">
+                                <div class="preview-placeholder">
+                                    <div class="placeholder-content">
+                                        <div class="placeholder-icon">📹</div>
+                                        <h4>Aperçu du live</h4>
+                                        <p>L'aperçu apparaîtra ici une fois le live démarré</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="youtube-preview" id="youtube-preview" style="display: none;">
+                                    <iframe id="preview-iframe" 
+                                            width="100%" 
+                                            height="100%" 
+                                            frameborder="0" 
+                                            allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contrôles de diffusion -->
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h3>🎥 Contrôles de Diffusion</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="control-grid">
+                            <button class="control-btn" id="test-connection-btn">
+                                <span class="btn-icon">🔗</span>
+                                <span>Test Connexion</span>
+                            </button>
+                            <button class="control-btn" id="preview-btn">
+                                <span class="btn-icon">👁️</span>
+                                <span>Aperçu</span>
+                            </button>
+                            <button class="control-btn" id="record-btn">
+                                <span class="btn-icon">⚪</span>
+                                <span>Enregistrer</span>
+                            </button>
+                            <button class="control-btn" id="fullscreen-btn">
+                                <span class="btn-icon">⛶</span>
+                                <span>Plein écran</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Analytiques -->
+            <section class="admin-section" id="section-live-analytics">
+                <div class="section-header">
+                    <h2>📊 Analytiques Live</h2>
+                    <p>Métriques en temps réel de votre diffusion</p>
+                </div>
+
+                <!-- Métriques principales -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-content">
+                            <h3 id="peak-viewers">0</h3>
+                            <p>Pic de viewers</p>
+                            <span class="stat-change positive" id="viewers-change">+0%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">💬</div>
+                        <div class="stat-content">
+                            <h3 id="total-chat-messages">0</h3>
+                            <p>Messages totaux</p>
+                            <span class="stat-change" id="messages-rate">0/min</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">❤️</div>
+                        <div class="stat-content">
+                            <h3 id="total-likes">0</h3>
+                            <p>Likes reçus</p>
+                            <span class="stat-change positive" id="engagement-rate">0%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">⏱️</div>
+                        <div class="stat-content">
+                            <h3 id="avg-watch-time">0:00</h3>
+                            <p>Temps moyen</p>
+                            <span class="stat-change" id="retention-rate">0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Graphique -->
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h3>📈 Viewers en temps réel</h3>
+                    </div>
+                    <div class="card-content">
+                        <canvas id="viewers-chart" width="400" height="200"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Chat -->
+            <section class="admin-section" id="section-live-chat">
+                <div class="section-header">
+                    <h2>💬 Modération Chat</h2>
+                    <p>Surveillance et modération des messages en temps réel</p>
+                </div>
+
+                <div class="admin-grid">
+                    <div class="admin-card">
+                        <div class="card-header">
+                            <h3>💬 Messages en temps réel</h3>
+                            <div class="chat-controls">
+                                <button class="chat-control-btn active" id="chat-enable-btn">Chat ON</button>
+                                <button class="chat-control-btn" id="chat-disable-btn">Chat OFF</button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="chat-messages" id="admin-chat-messages">
+                                <!-- Messages générés dynamiquement -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="admin-card">
+                        <div class="card-header">
+                            <h3>🛠️ Actions de modération</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="quick-messages">
+                                <button class="quick-msg-btn" onclick="sendQuickMessage('welcome')">👋 Bienvenue</button>
+                                <button class="quick-msg-btn" onclick="sendQuickMessage('rules')">📋 Règles</button>
+                                <button class="quick-msg-btn" onclick="sendQuickMessage('break')">☕ Pause</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Planning -->
+            <section class="admin-section" id="section-live-schedule">
+                <div class="section-header">
+                    <h2>📅 Gestion Planning</h2>
+                    <p>Programmation et organisation des lives</p>
+                </div>
+
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h3>📅 Lives Programmés</h3>
+                        <button class="btn btn-primary" id="add-schedule-btn">➕ Programmer Live</button>
+                    </div>
+                    <div class="card-content">
+                        <div class="schedule-list" id="schedule-list">
+                            <!-- Liste générée dynamiquement -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Utilisateurs -->
+            <section class="admin-section" id="section-live-users">
+                <div class="section-header">
+                    <h2>👥 Utilisateurs Connectés</h2>
+                    <p>Surveillance des participants au live</p>
+                </div>
+
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h3>👥 En ligne (<span id="online-users-count">0</span>)</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="users-list" id="connected-users-list">
+                            <!-- Liste générée dynamiquement -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Navigation mobile (identique à admin.html) -->
+        <nav class="mobile-nav">
+            <div class="mobile-nav-items">
+                <a href="javascript:void(0)" class="mobile-nav-item active" data-section="live-control">
+                    <span class="icon">🎛️</span>
+                    <span class="label">Contrôle</span>
+                </a>
+                <a href="javascript:void(0)" class="mobile-nav-item" data-section="live-analytics">
+                    <span class="icon">📊</span>
+                    <span class="label">Stats</span>
+                </a>
+                <a href="javascript:void(0)" class="mobile-nav-item" data-section="live-chat">
+                    <span class="icon">💬</span>
+                    <span class="label">Chat</span>
+                </a>
+                <a href="javascript:void(0)" class="mobile-nav-item" data-section="live-schedule">
+                    <span class="icon">📅</span>
+                    <span class="label">Planning</span>
+                </a>
+                <a href="javascript:void(0)" class="mobile-nav-item" data-section="live-users">
+                    <span class="icon">👥</span>
+                    <span class="label">Users</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Modales identiques... -->
+    <!-- Modal Programmation Live -->
+    <div class="modal" id="schedule-modal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>📅 Programmer un Live</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="schedule-form" class="schedule-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="schedule-title">Titre du Live</label>
+                            <input type="text" id="schedule-title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="schedule-instructor">Formateur</label>
+                            <select id="schedule-instructor">
+                                <option value="commandant">Commandant Spatial</option>
+                                <option value="expert">Expert Crypto</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="schedule-description">Description</label>
+                        <textarea id="schedule-description" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="schedule-date">Date</label>
+                            <input type="date" id="schedule-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="schedule-time">Heure</label>
+                            <input type="time" id="schedule-time" required>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal()">Annuler</button>
+                <button class="btn btn-primary" onclick="saveLiveSchedule()">📅 Programmer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    
+    <!-- Config Firebase -->
+    <script src="../../firebase/config.js"></script>
+    
+    <!-- Chart.js pour les graphiques -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    
+    <!-- Scripts Admin -->
+    <script src="js/admin-main.js"></script>
+    <script src="js/user-management.js"></script>
+    <script src="js/course-management.js"></script>
+    <script src="js/live-management.js"></script>
+    <script src="js/finance-management.js"></script>
+    
+    <!-- Auth Firebase -->
+    <script src="../../firebase/auth.js"></script>
+
+</body>
+</html>
